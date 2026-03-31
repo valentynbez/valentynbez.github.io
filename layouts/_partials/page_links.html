@@ -1,0 +1,86 @@
+{{ $is_list := .is_list }}
+{{ $page := .page }}
+
+{{/* Build normalized links (new API) */}}
+{{ $built := partial "functions/build_links" (dict "page" $page "is_list" $is_list) }}
+
+{{ $ctx := cond $is_list "list" "page" }}
+
+{{/* Only render these button types */}}
+{{ $allowedTypes := slice "source" "pdf" "doi" "bibtex" }}
+
+{{/* English fallbacks if i18n key is missing in a locale */}}
+{{ $fallbackByKey := dict
+  "btn_pdf" "PDF"
+  "btn_doi" "DOI"
+  "btn_code" "Code"
+  "btn_site" "Site"
+  "btn_source" "Link"
+  "btn_cite" "Cite"
+}} 
+
+<div class="flex items-center gap-3" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: nowrap; overflow-x: auto;">
+{{ range $built }}
+  {{ if in .contexts $ctx }}
+    {{ if in $allowedTypes .type }}
+      {{ $url := .url | default "" }}
+      {{ $scheme := (urls.Parse $url).Scheme }}
+      {{ $target := "" }}
+      {{ $rel := slice }}
+      {{ with .rel }}{{ $rel = . }}{{ end }}
+      {{ if not $scheme }}
+        {{ with ($page.Resources.GetMatch $url) }}
+          {{ $url = .RelPermalink }}
+        {{ else }}
+          {{ $url = $url | relURL }}
+        {{ end }}
+      {{ else if in (slice "http" "https") $scheme }}
+        {{ $target = "target=\"_blank\"" }}
+        {{ $rel = $rel | append "noopener" }}
+      {{ end }}
+
+      {{ $classes := printf "hb-attachment-link %s" (cond $is_list "hb-attachment-link-small" "hb-attachment-link-large") }}
+      {{ $label := .label }}
+      {{ with .labelKey }}
+        {{ if not $label }}
+          {{ $label = (i18n .) | default (index $fallbackByKey .) | default "Link" }}
+        {{ end }}
+      {{ end }}
+      {{ if not $label }}
+        {{ $label = "Link" }}
+      {{ end }}
+
+      {{ if eq .type "bibtex" }}
+        <button class="{{ $classes }} js-cite-clipboard cursor-pointer" type="button" data-filename="{{ $url }}" style="white-space: nowrap; flex-shrink: 0;">
+          {{ partial "functions/get_icon" (dict "name" (.icon | default "hero/document-duplicate") "attributes" "style=\"height: 1em\" class='inline-block'") }}
+          <span>{{ $label }}</span>
+        </button>
+      {{ else }}
+        <a class="{{ $classes }}" href="{{ $url | safeURL }}" {{ $target | safeHTMLAttr }} {{ with $rel }}rel="{{ delimit . " " }}"{{ end }} style="white-space: nowrap; flex-shrink: 0;">
+          {{ partial "functions/get_icon" (dict "name" (.icon | default "hero/link") "attributes" "style=\"height: 1em\" class='inline-block'") }}
+          {{ $label }}
+        </a>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+</div>
+
+{{/* Append Altmetrics and Dimensions Badges */}}
+{{ $doi := "" }}
+{{ if $page.Params.doi }}
+  {{ $doi = $page.Params.doi }}
+{{ else if and (isset $page.Params "hugoblox") (isset $page.Params.hugoblox "ids") }}
+  {{ if isset $page.Params.hugoblox.ids "doi" }}
+    {{ $doi = $page.Params.hugoblox.ids.doi }}
+  {{ end }}
+{{ end }}
+
+{{ if $doi }}
+<div class="ml-auto flex items-center gap-2 justify-end" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+  <span class="__dimensions_badge_embed__" data-doi="{{ $doi }}" data-hide-zero-citations="true" data-style="small_rectangle"></span>
+  <div data-badge-type="donut" data-doi="{{ $doi }}" class="altmetric-embed" style="display: inline-block;"></div>
+</div>
+{{ end }}
+
+

@@ -1,0 +1,110 @@
+{{ define "main" }}
+
+<div class="max-w-prose mx-auto flex justify-center">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert">
+    <h1 class="lg:text-4xl font-bold mb-8">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+</div>
+
+{{ $groups := .Pages.GroupByDate "2006" "desc" }}
+
+<div class="publications-timeline-wrapper">
+
+  {{/* Sticky year timeline sidebar */}}
+  <nav class="timeline-sidebar" id="pub-timeline-nav" aria-label="Publication year navigation">
+    <div class="timeline-track">
+      {{ range $groups }}
+        <a href="#pub-year-{{ .Key }}" class="timeline-year-link" data-year="{{ .Key }}">{{ .Key }}</a>
+      {{ end }}
+    </div>
+  </nav>
+
+  {{/* Main publications list */}}
+  <div class="publications-list" id="publications-list">
+    {{ range $groups }}
+      {{ $year := .Key }}
+      <section class="pub-year-section" id="pub-year-{{ $year }}">
+        <div class="pub-year-heading">
+          <span class="pub-year-badge">{{ $year }}</span>
+        </div>
+        <div class="pub-year-articles">
+          {{ range .Pages }}
+            {{ $item := . }}
+            {{ $has_attachments := partial "functions/has_attachments" $item }}
+            <div class="pub-list-item view-citation">
+              <div class="pub-title">
+                <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>
+              </div>
+              <div class="pub-authors">
+                {{ partial "page_metadata_authors" $item }}
+              </div>
+              {{ if $item.Params.publication_short }}
+                <div class="pub-journal">{{- $item.Params.publication_short | markdownify -}}</div>
+              {{ else if $item.Params.publication }}
+                <div class="pub-journal">{{- $item.Params.publication | markdownify -}}</div>
+              {{ end }}
+              <div class="pub-date">{{ $item.Date.Format "2006-01-02" }}</div>
+
+              {{ if $has_attachments }}
+              <div class="pub-links flex flex-wrap space-x-3 mt-1">
+                {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+              </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  </div>
+
+</div>
+
+<script>
+(function() {
+  // Highlight current year in timeline as user scrolls
+  const sections = document.querySelectorAll('.pub-year-section');
+  const links = document.querySelectorAll('.timeline-year-link');
+
+  function getActiveYear() {
+    let active = null;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 120) active = section.id;
+    });
+    return active;
+  }
+
+  function updateActive() {
+    const activeId = getActiveYear();
+    links.forEach(link => {
+      const href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('timeline-year-active', href === activeId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+</script>
+
+{{/* Load badge scripts ONCE after all placeholders are rendered */}}
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+<script>
+(function() {
+  function fixDimensionsColor() {
+    var isDark = document.documentElement.classList.contains('dark');
+    document.querySelectorAll('.__dimensions_badge_embed__ a').forEach(function(el) {
+      el.style.color = isDark ? '#e5e7eb' : '';
+    });
+  }
+  var obs = new MutationObserver(function(m) {
+    m.forEach(function(mut) { if (mut.attributeName === 'class') fixDimensionsColor(); });
+  });
+  obs.observe(document.documentElement, { attributes: true });
+  setTimeout(fixDimensionsColor, 2000);
+})();
+</script>
+
+{{ end }}

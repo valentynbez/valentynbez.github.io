@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+<div class="max-w-prose mx-auto flex justify-center">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert">
+    {{ if eq .Type "publications" }}
+      <h1 class="lg:text-6xl text-red-500 font-bold">OVERRIDE: GLOBAL PUBLICATIONS HOOK</h1>
+    {{ else if eq .Type "publication" }}
+      <h1 class="lg:text-6xl text-red-500 font-bold">OVERRIDE: GLOBAL PUBLICATION HOOK</h1>
+    {{ end }}
+    <h1 class="lg:text-6xl">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+</div>
+
+{{/* Force citation view precisely for publication endpoints */}}
+{{ $view := .Params.view | default "card" }}
+{{ if or (eq .Type "publication") (eq .Type "publications") }}
+  {{ $view = "citation" }}
+{{ end }}
+{{ $block := . }}
+
+{{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+{{ $config := dict 
+  "columns" 1 
+  "len" (len $paginator.Pages) 
+  "fill_image" false
+  "show_date" (.Params.show_date | default true)
+  "show_read_time" (.Params.show_read_time | default true)
+  "show_read_more" (.Params.show_read_more | default true)
+}}
+
+{{/* Check if any pages have author_notes to enable Alpine.js */}}
+{{ range .Pages }}
+  {{ if isset .Params "author_notes" }}
+    {{ $.Store.Set "has_alpine" true }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+<div class="flex flex-col items-center">
+
+  {{ partial "functions/render_view" (dict "fragment" "start" "page" $block "item" . "view" $view "config" $config) }}
+
+  {{ range $index, $item := $paginator.Pages }}
+  {{ partial "functions/render_view" (dict "page" . "item" . "view" $view "index" $index "config" $config) }}
+  {{end}}
+
+  {{ partial "functions/render_view" (dict "fragment" "end" "page" $block "item" . "view" $view) }}
+
+  {{ partial "components/paginator" . }}
+
+</div>
+
+{{ end }}

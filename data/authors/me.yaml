@@ -1,0 +1,123 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Valentyn Bezshapkin
+  given: Valentyn
+  family: Bezshapkin
+  alternate: ''
+  pronunciation: ''
+  pronouns: he/him
+postnominals:
+  - MD
+status:
+  icon: "🧬"
+role: PhD Researcher in Bioinformatics
+bio: |
+  MD and PhD student in Bioinformatics at ETH Zürich, applying deep learning
+  and computational methods to decode the human gut microbiome. Building tools
+  that bridge metagenomics, machine learning, and clinical insights.
+
+affiliations:
+  - name: ETH Zürich — Sunagawa Lab
+    url: https://micro.biol.ethz.ch/research/sunagawa.html
+
+links:
+  - icon: at-symbol
+    url: mailto:valentyn.bezshapkin@micro.biol.ethz.ch
+    label: E-mail Me
+  - icon: brands/github
+    url: https://github.com/valentynbez
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=valentyn-bezshapkin
+  - icon: academicons/orcid
+    url: https://orcid.org/0000-0002-0912-4371
+
+interests:
+  - Metagenomics
+  - Human Gut Microbiome
+  - Machine Learning for Biology
+  - Bioinformatics & Computational Biology
+  - Viromics
+
+education:
+  - degree: PhD in Bioinformatics
+    institution: ETH Zürich
+    start: 2022-01-01
+    summary: |
+      Sunagawa Lab, Institute of Microbiology. Research on human gut metagenome
+      and viromics using deep learning and computational methods. Developing novel
+      pipelines for functional annotation of metagenomes.
+  - degree: Doctor of Medicine (MD)
+    institution: Jagiellonian University Medical College
+    summary: |
+      Medical degree with exposure to clinical research in critical care,
+      urology, and microbiome science.
+
+experience:
+  - role: PhD Researcher
+    org: ETH Zürich — Sunagawa Lab
+    start: 2022-01-01
+    summary: |
+      Developing deep learning methods for functional annotation of metagenomes.
+      Building the Metagenomic-DeepFRI pipeline and contributing to scikit-bio and QIIME 2.
+      Collaborating with Genentech, Roche, and the Sano Centre for Computational Medicine.
+  - role: Bioinformatics Researcher
+    org: Sano Centre for Computational Medicine
+    summary: |
+      Applied machine learning to microbiome datasets. Won the CAMDA 2021
+      "Literature AI for Drug Induced Liver Injury" challenge. Developed
+      computational methods for clinical and biomedical applications.
+
+skills:
+  - name: Computational Biology
+    items:
+      - label: Metagenomics & Viromics
+        level: 5
+      - label: Deep Learning (PyTorch, GCN)
+        level: 5
+      - label: Bioinformatics Pipelines
+        level: 5
+  - name: Software Engineering
+    items:
+      - label: Python
+        level: 5
+      - label: WDL / Nextflow
+        level: 4
+      - label: Cloud & HPC Computing
+        level: 4
+  - name: Research & Translation
+    items:
+      - label: Scientific Publishing
+        level: 5
+      - label: Open-Source Development
+        level: 5
+      - label: Cross-Disciplinary Collaboration
+        level: 4
+
+languages:
+  - name: Ukrainian
+    level: 5
+    label: Native
+  - name: English
+    level: 5
+    label: Fluent
+  - name: Polish
+    level: 4
+    label: Fluent
+
+awards:
+  - title: "CAMDA 2021 Winner — Literature AI for Drug Induced Liver Injury"
+    awarder: CAMDA (Critical Assessment of Massive Data Analysis)
+    date: "2021-07-01"
+    summary: |
+      Winning solution for the Literature AI challenge: built an NLP/ML pipeline
+      to identify drug-induced liver injury publications from large-scale PubMed datasets.
+    icon: hero/trophy
+  - title: "Co-author — scikit-bio in Nature Methods"
+    awarder: Nature Methods
+    date: "2025-01-01"
+    summary: |
+      Co-authored the scikit-bio paper, a fundamental Python library for biological
+      omic data analysis, published in Nature Methods.
+    icon: hero/academic-cap

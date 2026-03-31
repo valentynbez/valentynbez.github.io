@@ -1,0 +1,527 @@
+/* =============================================
+   1. GLOBAL RESETS & BASE TYPOGRAPHY
+   ============================================= */
+
+/* Remove top space on biography block */
+div#resume-biography,
+section#resume-biography,
+.resume-biography {
+    padding-top: 2rem !important;
+    margin-top: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Global text justification */
+.prose p,
+.prose li {
+    text-align: justify !important;
+}
+
+/* Decrease font size globally */
+html, body {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* Force text size down inside prose containers */
+main#main .prose,
+main#main .prose-lg,
+main#main .text-base,
+main#main .text-lg,
+main#main p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+/* Force header sizes down */
+main#main h1, main#main .text-3xl, main#main .text-2xl { font-size: 1.5rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
+main#main h2, main#main .text-xl { font-size: 1.25rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
+main#main h3, main#main .text-lg { font-size: 1.1rem !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; }
+main#main .text-primary-600 { font-size: 1.25rem !important; color: #333 !important; font-weight: 500 !important; }
+
+/* =============================================
+   2. PROFILE & AVATAR
+   ============================================= */
+
+/* Centre all text inside #profile */
+#profile div, #profile h1, #profile h3,
+#profile span, #profile a, #profile ul, #profile li {
+    text-align: center !important;
+}
+#profile ul.network-icon {
+    justify-content: center !important;
+}
+#profile .avatar-wrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Avatar sizing (single source of truth: 210px) */
+.avatar-wrapper {
+    height: 210px !important;
+    margin-bottom: 2.5rem !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+img.avatar, .avatar-circle, .resume-biography-3 img {
+    width: 210px !important;
+    height: 210px !important;
+    max-width: 210px !important;
+    max-height: 210px !important;
+    min-width: 210px !important;
+    min-height: 210px !important;
+    object-fit: cover !important;
+}
+
+/* Status emoji badge on avatar */
+.avatar-emoji {
+    position: absolute !important;
+    bottom: 6px !important;
+    right: 35px !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    background: white !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.7rem !important;
+    line-height: 1 !important;
+    border: 2px solid #e5e7eb !important;
+}
+
+/* Hide decorative backgrounds */
+.home-section-bg, .avatar-circle::after, .bg-gradient-mesh, .dark\:bg-gradient-mesh {
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+/* Social icons */
+.social-icon { width: 2rem !important; height: 2rem !important; }
+ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
+
+/* =============================================
+   3. NAVBAR & DROPDOWN (consolidated)
+   ============================================= */
+
+.navbar {
+    position: relative;
+}
+
+/* Brand name: padding + hover */
+.navbar-brand {
+    padding-left: 2rem !important;
+    transition: color 0.2s;
+}
+.navbar-brand:hover {
+    color: #16a34a !important;
+}
+
+/* Dropdown container */
+.nav-dropdown {
+    position: relative !important;
+    display: flex;
+    align-items: center;
+}
+.nav-dropdown > .nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+}
+.nav-dropdown > .nav-link svg {
+    margin-left: 0 !important;
+}
+
+/* Dropdown panel */
+.nav-dropdown-list {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    min-width: 140px;
+    text-align: center;
+    margin-top: 0.25rem !important;
+    padding: 0.35rem 0 !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+}
+.dark .nav-dropdown-list {
+    border-color: rgba(255,255,255,0.08) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35) !important;
+}
+.group:hover .nav-dropdown-list {
+    transform: translateX(-50%) !important;
+}
+
+/* Dropdown items */
+.nav-dropdown-item {
+    display: block;
+    text-align: center !important;
+    width: 100%;
+    padding: 0 0.35rem;
+}
+.nav-dropdown-link {
+    display: block !important;
+    width: 100%;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em;
+    color: #374151;
+    border-radius: 0.35rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    text-decoration: none !important;
+}
+.dark .nav-dropdown-link {
+    color: #e5e7eb;
+}
+.nav-dropdown-link:hover {
+    background-color: #f0fdf4 !important;
+    color: #16a34a !important;
+}
+.dark .nav-dropdown-link:hover {
+    background-color: rgba(22,163,106,0.12) !important;
+    color: #4ade80 !important;
+}
+.nav-dropdown-link.active {
+    color: #16a34a !important;
+    font-weight: 600 !important;
+}
+.dark .nav-dropdown-link.active {
+    color: #4ade80 !important;
+}
+
+/* =============================================
+   4. PUBLICATIONS TIMELINE LAYOUT
+   ============================================= */
+
+.publications-timeline-wrapper {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    max-width: 56rem;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+    position: relative;
+}
+
+/* Sticky year sidebar */
+.timeline-sidebar {
+    position: sticky;
+    top: 80px;
+    width: 72px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    z-index: 10;
+}
+.timeline-sidebar::-webkit-scrollbar { display: none; }
+
+.timeline-track {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    padding-right: 18px;
+    border-right: 2px solid #e5e7eb;
+    position: relative;
+}
+.dark .timeline-track { border-right-color: #374151; }
+
+.timeline-year-link {
+    display: block;
+    font-size: 0.9rem !important;
+    font-weight: 600;
+    color: #9ca3af;
+    text-align: right;
+    padding: 6px 8px 6px 0;
+    text-decoration: none !important;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
+    position: relative;
+    white-space: nowrap;
+}
+.timeline-year-link::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    border: 2px solid #f9fafb;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.dark .timeline-year-link::after {
+    background-color: #4b5563;
+    border-color: #111827;
+}
+.timeline-year-link:hover,
+.timeline-year-link.timeline-year-active {
+    color: #16a34a !important;
+    transform: translateX(-3px);
+}
+.timeline-year-link.timeline-year-active::after,
+.timeline-year-link:hover::after {
+    background-color: #16a34a;
+    transform: translateY(-50%) scale(1.4);
+}
+
+/* Publications list column */
+.publications-list {
+    flex: 1;
+    min-width: 0;
+    padding-left: 2rem;
+}
+.pub-year-section {
+    margin-bottom: 0.4rem;
+    scroll-margin-top: 80px;
+}
+.pub-year-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+.pub-year-badge {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #16a34a;
+    letter-spacing: 0.04em;
+}
+.pub-year-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Individual citation items */
+.view-citation {
+    position: relative;
+    padding-left: 1.5rem !important;
+    opacity: 0;
+    transform: translateX(-12px);
+    animation: timelineFadeIn 0.5s ease-out forwards;
+    margin-bottom: 0.4rem !important;
+}
+.view-citation:nth-child(1) { animation-delay: 0.05s; }
+.view-citation:nth-child(2) { animation-delay: 0.12s; }
+.view-citation:nth-child(3) { animation-delay: 0.19s; }
+.view-citation:nth-child(4) { animation-delay: 0.26s; }
+.view-citation:nth-child(5) { animation-delay: 0.33s; }
+
+@keyframes timelineFadeIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.view-citation::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #16a34a;
+}
+
+/* Responsive: collapse sidebar on small screens */
+@media (max-width: 640px) {
+    .timeline-sidebar { display: none; }
+    .publications-list { padding-left: 0.25rem; }
+    .publications-timeline-wrapper { margin-top: 1rem; padding: 0 0.5rem; }
+}
+
+/* Publication item format */
+.pub-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+}
+.pub-title a { text-decoration: none; color: inherit; }
+.pub-title a:hover { text-decoration: underline; color: #16a34a; }
+
+.pub-authors { font-size: 0.82rem; color: #6b7280; margin-bottom: 0.1rem; }
+.dark .pub-authors { color: #9ca3af; }
+
+.pub-journal { font-style: italic; font-size: 0.82rem; color: #6b7280; margin-bottom: 0.1rem; }
+.dark .pub-journal { color: #9ca3af; }
+.pub-journal p { display: inline; margin: 0; }
+
+.pub-date {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    margin-bottom: 0.3rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 6. Highlight publication titles on hover without links */
+.pub-title-hover {
+    transition: color 0.15s ease-in-out !important;
+}
+.pub-title-hover:hover {
+    color: #16a34a !important; /* Green highlight */
+}
+
+/* =============================================
+   5. PUBLICATION BUTTONS & BADGES
+   ============================================= */
+
+.pub-list-item .flex.flex-wrap,
+.view-citation .flex.flex-wrap {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important; /* Mobile scroll */
+    overflow-y: visible !important;
+}
+@media (min-width: 768px) {
+    .pub-list-item .flex.flex-wrap,
+    .view-citation .flex.flex-wrap {
+        overflow: visible !important; /* Desktop popout */
+    }
+}
+.pub-list-item .flex.flex-wrap,
+.view-citation .flex.flex-wrap {
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding-bottom: 0.5rem;
+    width: 100% !important;
+    display: flex !important;
+}
+.pub-list-item .flex.flex-wrap > * {
+    flex-shrink: 0 !important;
+}
+.pub-list-item .ml-auto {
+    margin-left: auto !important;
+    justify-content: flex-end !important;
+}
+.altmetric-embed {
+    display: inline-block !important;
+    margin-top: -2px !important;
+}
+/* Dark mode: invert only the donut IMAGE (numbers baked in as pixels) */
+.dark .altmetric-embed img {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Dimensions badge — enlarged hover zone so popover doesn't close */
+.__dimensions_badge_embed__ {
+    position: relative !important;
+    z-index: 50 !important;
+    padding: 8px !important;        /* Invisible padding extends hover zone */
+    margin: -8px !important;        /* Offset the padding visually */
+}
+/* Invisible bridge between badge and popover */
+.__dimensions_badge_embed__::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    z-index: -1;
+}
+.dimensions-citation-popover {
+    z-index: 20000 !important;
+}
+
+
+/* =============================================
+   6. SINGLE PUBLICATION VIEW OVERRIDES
+   ============================================= */
+
+div[class*="md:grid-cols-[200px_auto]"] > div {
+    text-align: justify !important;
+}
+div[class*="md:grid-cols-[200px_auto]"] p {
+    text-align: justify !important;
+}
+
+@media (min-width: 768px) {
+    div[class*="md:grid-cols-[200px_auto]"] {
+        grid-template-columns: 120px auto !important;
+        max-width: 56rem !important;
+        gap: 2rem !important;
+    }
+}
+
+/* =============================================
+   7. LANDING PAGE (RESUME-BIOGRAPHY) TWEAKS
+   ============================================= */
+
+/* Expand prose width */
+@media (min-width: 768px) {
+    .resume-biography .prose,
+    .resume-biography .prose-lg {
+        max-width: 82ch !important;
+    }
+}
+
+/* Tighten gap between avatar and name */
+.resume-biography .space-y-3,
+.resume-biography .space-y-6,
+.resume-biography .space-y-8 {
+    row-gap: 0.25rem !important;
+}
+.resume-biography .mt-8.pt-4 {
+    margin-top: 0.25rem !important;
+    padding-top: 0 !important;
+}
+.resume-biography h1 {
+    font-size: 2.25rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.25rem !important;
+}
+.resume-biography .space-y-3 p.text-lg {
+    font-size: 1rem !important; /* Pronouns */
+}
+.resume-biography .space-y-3 p.text-2xl {
+    font-size: 1.15rem !important; /* Role */
+    margin-top: 0.25rem !important;
+}
+.resume-biography .space-y-3 p.text-lg.text-gray-700 {
+    font-size: 0.95rem !important; /* Affiliations */
+}
+
+/* Slightly reduce bio body font size */
+.resume-biography .bio-text,
+.resume-biography .bio-text p {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Social icons sizing and spacing */
+.resume-biography .flex.justify-center.gap-4 a {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+.resume-biography .flex.justify-center.gap-4 svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+/* 4. Shrink Download CV button */
+.resume-biography a.bg-gradient-to-r {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 0.75rem !important;
+}
+.resume-biography .mb-16 {
+    margin-bottom: 1.25rem !important;
+}
+.resume-biography .mb-12 {
+    margin-bottom: 1rem !important;
+}
+.resume-biography h3 + div.grid,
+.resume-biography .flex.items-center.gap-4.mb-8 {
+    margin-bottom: 0.75rem !important;
+}
