@@ -47,7 +47,14 @@
                   {{ end }}
                 </div>
 
-                <div class="pub-date text-xs text-slate-400 mt-1">{{ $item.Date.Format "January 2006" }}</div>
+                <div class="pub-date text-xs text-slate-400 mt-1 mb-2">{{ $item.Date.Format "January 2006" }}</div>
+
+                {{ $has_attachments := partial "functions/has_attachments" $item }}
+                {{ if $has_attachments }}
+                <div class="pub-links flex flex-wrap gap-3 mt-2">
+                  {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+                </div>
+                {{ end }}
               </div>
             {{ end }}
           </div>
