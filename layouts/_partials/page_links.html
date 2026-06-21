@@ -7,7 +7,7 @@
 {{ $ctx := cond $is_list "list" "page" }}
 
 {{/* Only render these button types */}}
-{{ $allowedTypes := slice "source" "pdf" "doi" "bibtex" }}
+{{ $allowedTypes := slice "source" "pdf" "doi" "bibtex" "slides" "video" "code" "site" }}
 
 {{/* English fallbacks if i18n key is missing in a locale */}}
 {{ $fallbackByKey := dict
@@ -17,6 +17,8 @@
   "btn_site" "Site"
   "btn_source" "Link"
   "btn_cite" "Cite"
+  "btn_slides" "Slides"
+  "btn_video" "Video"
 }} 
 
 <div class="flex items-center gap-3" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: nowrap; overflow-x: auto;">
