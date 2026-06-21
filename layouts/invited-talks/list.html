@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+<div class="max-w-6xl mx-auto px-4 md:px-8 py-12">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert max-w-none mb-12">
+    <h1 class="lg:text-4xl font-bold mb-8 text-slate-800 dark:text-slate-100">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+
+  {{ $groups := .Pages.GroupByDate "2006" "desc" }}
+
+  <div class="publications-timeline-wrapper">
+
+    {{/* Sticky year timeline sidebar */}}
+    <nav class="timeline-sidebar" id="talk-timeline-nav" aria-label="Talk year navigation">
+      <div class="timeline-track">
+        {{ range $groups }}
+          <a href="#talk-year-{{ .Key }}" class="timeline-year-link" data-year="{{ .Key }}">{{ .Key }}</a>
+        {{ end }}
+      </div>
+    </nav>
+
+    {{/* Main talks list */}}
+    <div class="publications-list" id="talks-list">
+      {{ range $groups }}
+        {{ $year := .Key }}
+        <section class="pub-year-section" id="talk-year-{{ $year }}">
+          <div class="pub-year-heading">
+            <span class="pub-year-badge">{{ $year }}</span>
+          </div>
+          <div class="pub-year-articles">
+            {{ range .Pages }}
+              {{ $item := . }}
+              <div class="pub-list-item view-citation">
+                <div class="pub-title">
+                  <a href="{{ $item.RelPermalink }}" class="pub-title-hover text-lg font-bold text-slate-800 dark:text-slate-100 hover:text-indigo-500 transition-colors">
+                    {{ $item.Title }}
+                  </a>
+                </div>
+                
+                <div class="text-sm mt-1 text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-x-3">
+                  {{ if $item.Params.event }}
+                    <span class="font-semibold text-indigo-500 dark:text-indigo-400">{{ $item.Params.event }}</span>
+                  {{ end }}
+                  {{ if and $item.Params.event $item.Params.location }}<span class="text-slate-300 dark:text-slate-700">•</span>{{ end }}
+                  {{ if $item.Params.location }}
+                    <span>📍 {{ $item.Params.location }}</span>
+                  {{ end }}
+                </div>
+
+                <div class="pub-date text-xs text-slate-400 mt-1">{{ $item.Date.Format "January 2006" }}</div>
+              </div>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('.pub-year-section');
+  const links = document.querySelectorAll('.timeline-year-link');
+
+  function getActiveYear() {
+    let active = null;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 120) active = section.id;
+    });
+    return active;
+  }
+
+  function updateActive() {
+    const activeId = getActiveYear();
+    links.forEach(link => {
+      const href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('timeline-year-active', href === activeId);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+</script>
+
+{{ end }}

@@ -8,6 +8,7 @@
 
 # Generated site output
 public/
+.agent/
 
 # Hugo resources (processed assets)
 resources/

@@ -32,6 +32,9 @@ links:
     url: https://scholar.google.com/citations?user=valentyn-bezshapkin
   - icon: academicons/orcid
     url: https://orcid.org/0000-0002-0912-4371
+  - icon: custom/substack
+    url: https://valentynbez.substack.com/
+    label: Substack
 
 interests:
   - Metagenomics
@@ -42,32 +45,18 @@ interests:
 
 education:
   - degree: PhD in Bioinformatics
-    institution: ETH Zürich
-    start: 2022-01-01
+    institution: ETH Zürich, Switzerland
+    start: 2022-10-01
+    end: 2026-12-03
     summary: |
       Sunagawa Lab, Institute of Microbiology. Research on human gut metagenome
       and viromics using deep learning and computational methods. Developing novel
       pipelines for functional annotation of metagenomes.
   - degree: Doctor of Medicine (MD)
-    institution: Jagiellonian University Medical College
+    institution: Jagiellonian University Medical College, Kraków, Poland
     summary: |
       Medical degree with exposure to clinical research in critical care,
       urology, and microbiome science.
-
-experience:
-  - role: PhD Researcher
-    org: ETH Zürich — Sunagawa Lab
-    start: 2022-01-01
-    summary: |
-      Developing deep learning methods for functional annotation of metagenomes.
-      Building the Metagenomic-DeepFRI pipeline and contributing to scikit-bio and QIIME 2.
-      Collaborating with Genentech, Roche, and the Sano Centre for Computational Medicine.
-  - role: Bioinformatics Researcher
-    org: Sano Centre for Computational Medicine
-    summary: |
-      Applied machine learning to microbiome datasets. Won the CAMDA 2021
-      "Literature AI for Drug Induced Liver Injury" challenge. Developed
-      computational methods for clinical and biomedical applications.
 
 skills:
   - name: Computational Biology
@@ -75,7 +64,7 @@ skills:
       - label: Metagenomics & Viromics
         level: 5
       - label: Deep Learning (PyTorch, GCN)
-        level: 5
+        level: 4
       - label: Bioinformatics Pipelines
         level: 5
   - name: Software Engineering
@@ -83,7 +72,7 @@ skills:
       - label: Python
         level: 5
       - label: WDL / Nextflow
-        level: 4
+        level: 5
       - label: Cloud & HPC Computing
         level: 4
   - name: Research & Translation
@@ -93,7 +82,7 @@ skills:
       - label: Open-Source Development
         level: 5
       - label: Cross-Disciplinary Collaboration
-        level: 4
+        level: 5
 
 languages:
   - name: Ukrainian

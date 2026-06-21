@@ -3,7 +3,7 @@
 {{ $year := (time $year_value).Format "2006" }}
 {{ $has_attachments := partial "functions/has_attachments" $item }}
 
-<div class="pub-list-item view-citation" style="margin-bottom: 1rem">
+<div class="pub-list-item view-citation">
   <i class="far fa-file-alt pub-icon" aria-hidden="true"></i>
 
   {{/* APA Style */}}
@@ -21,7 +21,7 @@
   {{ end }}
 
   {{ if $has_attachments }}
-  <div class="mt-3" style="width: 100% !important; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important;">
+  <div class="pub-links flex flex-wrap space-x-3 mt-1">
     {{ partial "page_links" (dict "page" $item "is_list" 1) }}
   </div>
   {{ end }}
@@ -41,7 +41,7 @@
   {{- $year -}}.
 
   {{ if $has_attachments }}
-  <div class="mt-3" style="width: 100% !important; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important;">
+  <div class="pub-links flex flex-wrap space-x-3 mt-1">
     {{ partial "page_links" (dict "page" $item "is_list" 1) }}
   </div>
   {{ end }}

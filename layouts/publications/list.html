@@ -34,7 +34,7 @@
             {{ $has_attachments := partial "functions/has_attachments" $item }}
             <div class="pub-list-item view-citation">
               <div class="pub-title">
-                <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>
+                <span class="pub-title-hover">{{ $item.Title }}</span>
               </div>
               <div class="pub-authors">
                 {{ partial "page_metadata_authors" $item }}
@@ -45,6 +45,18 @@
                 <div class="pub-journal">{{- $item.Params.publication | markdownify -}}</div>
               {{ end }}
               <div class="pub-date">{{ $item.Date.Format "2006-01-02" }}</div>
+
+              {{ if $item.Params.summary_title }}
+              <div class="pub-summary-title text-sm mt-2 text-slate-700 dark:text-slate-300">
+                <strong>Summary:</strong> {{ $item.Params.summary_title | markdownify }}
+              </div>
+              {{ end }}
+
+              {{ if $item.Params.summary_role }}
+              <div class="pub-summary-role text-sm mt-1 text-slate-700 dark:text-slate-300">
+                <strong>My Role:</strong> {{ $item.Params.summary_role | markdownify }}
+              </div>
+              {{ end }}
 
               {{ if $has_attachments }}
               <div class="pub-links flex flex-wrap space-x-3 mt-1">

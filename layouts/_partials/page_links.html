@@ -77,9 +77,9 @@
 {{ end }}
 
 {{ if $doi }}
-<div class="ml-auto flex items-center gap-2 justify-end" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
+<div class="ml-auto flex items-center gap-2 justify-end">
   <span class="__dimensions_badge_embed__" data-doi="{{ $doi }}" data-hide-zero-citations="true" data-style="small_rectangle"></span>
-  <div data-badge-type="donut" data-doi="{{ $doi }}" class="altmetric-embed" style="display: inline-block;"></div>
+  <div data-badge-type="donut" data-doi="{{ $doi }}" class="altmetric-embed"></div>
 </div>
 {{ end }}
 

@@ -5,13 +5,14 @@
 
 main:
   - name: Research
-    identifier: research
-    url: '#'
+    url: "/research/"
     weight: 10
-  - name: Publications
-    url: /publications/
-    weight: 1
-    parent: research
-  - name: Projects
-    url: projects/
+  - name: Papers
+    url: "/publications/"
     weight: 20
+  - name: Invited Talks
+    url: "/invited-talks/"
+    weight: 30
+  - name: Social Projects
+    url: "/social-projects/"
+    weight: 40

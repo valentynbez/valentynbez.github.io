@@ -13,11 +13,11 @@ sections:
     content:
       username: me
       text: |-
-        **Welcome!** I develop computational methods at the intersection of metagenomics, deep learning, and microbiome science — translating massive genomic datasets into actionable biological insights.
+        **Welcome!** I develop computational methods at the intersection of metagenomics, deep learning, and microbiome science — translating massive sequencing datasets into biological insights.
 
-        At [Sunagawa Lab (ETH Zürich)](https://micro.biol.ethz.ch/research/sunagawa.html), I build pipelines like **Metagenomic-DeepFRI** that leverage graph neural networks for protein function prediction. I'm a contributor to **QIIME 2** and **scikit-bio** (Nature Methods, 2025), collaborating with Genentech, Roche, and the Sano Centre for Computational Medicine.
+        At [Sunagawa Lab (ETH Zürich)](https://micro.biol.ethz.ch/research/sunagawa.html), I work on deciphering phage activity across environments and elucidating their functional potential. I had contributed to the development of **QIIME 2** and **scikit-bio**, two widely-used open-source bioinformatics toolkits.
 
-        Open for collaboration in biotech, computational biology, and venture capital advisory.
+        **Looking Ahead:** As I approach the conclusion of my PhD, I am actively exploring full-time opportunities and advisory roles where I can bridge the gap between deep tech and commercial impact. I am specifically looking to bring my technical expertise to **Biotech R&D** or **Venture Capital**. Let's connect!
       button:
         text: Download CV
         url: uploads/resume.pdf
