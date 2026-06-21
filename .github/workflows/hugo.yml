@@ -1,0 +1,38 @@
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your default branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Crucial for downloading the Academic theme
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: pervasivecode/setup-hugo@v2  # Or standard peaceiris/actions-hugo
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
