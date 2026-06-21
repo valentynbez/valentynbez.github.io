@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4 # Configures deployment metadata automatically
+        uses: actions/configure-pages@v5 # Configures deployment metadata automatically
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3   # The standard, reliable Hugo setup action
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install dependencies
