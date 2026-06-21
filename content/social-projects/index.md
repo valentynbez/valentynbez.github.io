@@ -66,7 +66,6 @@ type: research
       <div class="flex flex-col gap-4">
         <div class="flex flex-wrap items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500/10 text-orange-600 dark:text-orange-400">Curated Gatherings</span>
-          <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/10 text-slate-600 dark:text-slate-400">Intellectual Exchange</span>
           <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/10 text-slate-600 dark:text-slate-400">📍 Zurich, CH</span>
         </div>
         <a href="https://coffeehouseconf.com" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-semibold text-orange-500 hover:text-orange-600 dark:hover:text-orange-400 group/link">
