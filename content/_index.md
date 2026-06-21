@@ -20,7 +20,7 @@ sections:
         **Looking Ahead:** As I approach the conclusion of my PhD, I am actively exploring full-time opportunities and advisory roles where I can bridge the gap between deep tech and commercial impact. I am specifically looking to bring my technical expertise to **Biotech R&D** or **Venture Capital**. Let's connect!
       button:
         text: Download CV
-        url: uploads/resume.pdf
+        url: uploads/ValentynBezshapkin_CV.pdf
       headings:
         about: ''
         education: ''
