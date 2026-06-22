@@ -12,7 +12,7 @@ postnominals:
   - MD
 status:
   icon: "🧬"
-role: PhD Researcher in Bioinformatics
+role: MD, PhD Researcher in Bioinformatics
 bio: |
   MD and PhD student in Bioinformatics at ETH Zürich, applying deep learning
   and computational methods to decode the human gut microbiome. Building tools
@@ -44,7 +44,7 @@ interests:
   - Viromics
 
 education:
-  - degree: MD, PhD in Bioinformatics
+  - degree: PhD in Bioinformatics
     institution: ETH Zürich, Switzerland
     start: 2022-10-01
     end: 2026-12-03
