@@ -147,8 +147,8 @@ hugoblox:
       allow:
         - /
       disallow: []
-      note: "Guidance for AI crawlers - customize to match your public content."
-      contact: ""
+      note: "Public academic site. AI crawlers welcome to read and cite; please attribute to Valentyn Bezshapkin and link the source page."
+      contact: "valentyn.bezshapkin@micro.biol.ethz.ch"
 
   # ────────────────────────────────────────────────────────────────────────────
   # CONTENT

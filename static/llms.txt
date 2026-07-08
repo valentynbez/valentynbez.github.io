@@ -1,0 +1,38 @@
+# Valentyn Bezshapkin
+
+> MD & PhD researcher in bioinformatics at ETH Zürich (Sunagawa Lab), building
+> AI-powered tools for microbiome science and drug discovery. Work spans
+> metagenomics, deep learning, phage biology, and open-source scientific
+> software (contributor to QIIME 2 and scikit-bio).
+
+This site is public and AI crawlers are welcome to read and cite it. Please
+attribute content to Valentyn Bezshapkin and link back to the source page.
+
+## Profile
+
+- [Homepage](https://valentynbez.github.io/)
+- [ORCID](https://orcid.org/0000-0002-0912-4371)
+- [Google Scholar](https://scholar.google.com/citations?user=valentyn-bezshapkin)
+- [GitHub](https://github.com/valentynbez)
+- [Substack](https://valentynbez.substack.com/)
+
+## Sections
+
+- [Research](https://valentynbez.github.io/research/)
+- [Papers](https://valentynbez.github.io/publications/)
+- [Invited Talks](https://valentynbez.github.io/invited-talks/)
+- [Social Projects](https://valentynbez.github.io/social-projects/)
+
+## Selected publications
+
+- [Uncovering Cas9 PAM diversity through metagenomic mining and machine learning (2026)](https://valentynbez.github.io/publications/cas9-pam-diversity-2026/)
+- [Scikit-bio: a fundamental Python library for biological omic data analysis (2025)](https://valentynbez.github.io/publications/scikit-bio-2025/)
+- [Determinants of the microbiome spatial variability in chronic rhinosinusitis (2024)](https://valentynbez.github.io/publications/determinants-microbiome-rhinosinusitis-2024/)
+- [Predictors of outcomes of patients ≥ 80 years old admitted to ICUs in Poland — VIP2 study (2024)](https://valentynbez.github.io/publications/predictors-vip2-2024/)
+- [Comprehensive functional annotation of metagenomes using deep learning (2023)](https://valentynbez.github.io/publications/msystems-2023/)
+- [Diagnostic accuracy of bimanual palpation in bladder cancer patients (2023)](https://valentynbez.github.io/publications/diagnostic-accuracy-bladder-2023/)
+- [Multi-species probiotics change gut microbiota function in postmenopausal women with obesity (2022)](https://valentynbez.github.io/publications/probiotics-2022/)
+
+## Contact
+
+- Email: valentyn.bezshapkin@micro.biol.ethz.ch
