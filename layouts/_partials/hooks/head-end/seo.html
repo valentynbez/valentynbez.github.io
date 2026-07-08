@@ -1,0 +1,43 @@
+{{/* ponytail: SEO extras via head-end hook — no theme-partial edits, survives theme updates. */}}
+{{/* 1. Google Scholar citation_* meta tags on publication pages. */}}
+{{/* 2. schema.org Person JSON-LD on the homepage. */}}
+
+{{/* ── 1. Google Scholar meta tags ── */}}
+{{ if and .IsPage (eq .Section "publications") }}
+  {{ $author := site.Data.authors.me }}
+  <meta name="citation_title" content="{{ .Title }}" />
+  {{ range .Params.authors }}
+    {{ $name := . }}
+    {{ if eq . "me" }}{{ $name = $author.name.display }}{{ end }}
+    <meta name="citation_author" content="{{ $name }}" />
+  {{ end }}
+  {{ with .Date }}<meta name="citation_publication_date" content="{{ .Format "2006/01/02" }}" />{{ end }}
+  {{ with .Params.publication }}<meta name="citation_journal_title" content="{{ . | replaceRE `[*_]` `` }}" />{{ end }}
+  {{ with .Params.hugoblox.ids.doi }}<meta name="citation_doi" content="{{ . }}" />{{ end }}
+  {{ with (.Resources.GetMatch "**.pdf") }}<meta name="citation_pdf_url" content="{{ .Permalink }}" />{{ end }}
+  {{ with .Params.abstract }}<meta name="citation_abstract" content="{{ . | plainify }}" />{{ end }}
+{{ end }}
+
+{{/* ── 2. Person structured data (homepage only, avoids duplication) ── */}}
+{{ if .IsHome }}
+  {{ $author := site.Data.authors.me }}
+  {{ $sameAs := slice }}
+  {{ range $author.links }}
+    {{ if not (hasPrefix .url "mailto:") }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+  {{ end }}
+  <script type="application/ld+json">
+  {{ dict
+    "@context" "https://schema.org"
+    "@type" "Person"
+    "name" $author.name.display
+    "givenName" $author.name.given
+    "familyName" $author.name.family
+    "jobTitle" $author.role
+    "description" ($author.bio | plainify)
+    "url" site.Home.Permalink
+    "email" "valentyn.bezshapkin@micro.biol.ethz.ch"
+    "worksFor" (dict "@type" "Organization" "name" (index $author.affiliations 0).name "url" (index $author.affiliations 0).url)
+    "sameAs" $sameAs
+    | jsonify (dict "indent" "  ") | safeJS }}
+  </script>
+{{ end }}
