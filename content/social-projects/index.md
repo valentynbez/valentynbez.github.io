@@ -43,7 +43,7 @@ type: research
           <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400">Veteran Reintegration</span>
           <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-500/10 text-slate-600 dark:text-slate-400">📍 Zurich, CH & Kharkiv, UA</span>
         </div>
-        <a href="https://uba.com.ua/" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-semibold text-amber-500 hover:text-amber-600 dark:hover:text-amber-400 group/link">
+        <a href="https://en.uba.com.ua/" target="_blank" rel="noopener" class="inline-flex items-center text-sm font-semibold text-amber-500 hover:text-amber-600 dark:hover:text-amber-400 group/link">
           Visit uba.com.ua <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
