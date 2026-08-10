@@ -143,18 +143,15 @@
 {{ $avatar_image := (.Resources.ByType "image").GetMatch "avatar*" }}
   {{ $has_logo := fileExists "assets/media/logo.png" | or (fileExists "assets/media/logo.svg") }}
   {{ $og_image := "" }}
-  {{ $twitter_card := "summary_large_image" }}
 {{ if and (eq .Kind "term") (eq .Data.Singular "author") }}
   {{/* Try data-driven avatar for author term pages */}}
   {{ $termSlug := .Data.Term | urlize }}
   {{ $profile := partial "functions/get_author_profile" (dict "slug" $termSlug) }}
   {{ with $profile.avatar }}
     {{ $og_image = (.Fill "540x540 Center").Permalink }}
-    {{ $twitter_card = "summary" }}
   {{ end }}
 {{ else if (and (eq .Kind "term") $avatar_image) }}
   {{ $og_image = ($avatar_image.Fill "540x540 Center").Permalink }}
-  {{ $twitter_card = "summary" }}
 {{ else if $featured_image }}
     {{ $og_image = $featured_image.Permalink }}
   {{ else if $sharing_image }}
@@ -165,13 +162,11 @@
     {{ with $logo_data.resource }}
       {{ $og_image = .Permalink }}
     {{ end }}
-    {{ $twitter_card = "summary" }}
   {{ else }}
     {{ $icon_og := partial "functions/get_site_icon" 512 }}
     {{ with $icon_og.resource }}
       {{ $og_image = .Permalink }}
     {{ end }}
-    {{ $twitter_card = "summary" }}
   {{ end }}
   {{ $scr.Set "og_image" $og_image }}{{/* Set `og_image` globally for `rss.xml`. */}}
 
@@ -179,13 +174,13 @@
   {{ with .Params.seo.title }}
     {{ $title = replace . "{brand}" $branding.site_title }}
   {{ else }}
-    {{ $title = .Title | default $branding.site_title }}
-    {{ if ne $title $branding.site_title }}{{ $title = printf "%s | %s" $title $branding.site_title }}{{ end }}
-  {{ end }}
-  <meta property="twitter:card" content="{{ $twitter_card }}" />
-  {{ with site.Params.hugoblox.identity.social.twitter }}
-    <meta property="twitter:site" content="@{{ . }}" />
-    <meta property="twitter:creator" content="@{{ . }}" />
+    {{ if .IsHome }}
+      {{/* Enhanced title for homepage - include professional role for SEO */}}
+      {{ $title = printf "%s — Computational Biologist, ETH Zürich" $branding.site_title }}
+    {{ else }}
+      {{ $title = .Title | default $branding.site_title }}
+      {{ if ne $title $branding.site_title }}{{ $title = printf "%s | %s" $title $branding.site_title }}{{ end }}
+    {{ end }}
   {{ end }}
   <meta property="og:site_name" content="{{ $branding.site_title }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
@@ -193,7 +188,6 @@
   <meta property="og:description" content="{{ $desc }}" />
   {{- with $og_image -}}
     <meta property="og:image" content="{{ . }}" />
-    <meta property="twitter:image" content="{{ . }}" />
   {{- end -}}
   <meta property="og:locale" content="{{ site.LanguageCode | default "en-us" }}" />
   {{ if .IsPage }}
@@ -209,6 +203,9 @@
   {{ else }}
     {{ if not .Date.IsZero }}
       <meta property="og:updated_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />
+    {{ else }}
+      {{/* Fallback to current time if no date is set */}}
+      <meta property="og:updated_time" content="{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}" />
     {{ end }}
   {{ end }}
 

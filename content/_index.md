@@ -2,7 +2,7 @@
 # Leave the homepage title empty to use the site title
 title: ''
 summary: 'Valentyn Bezshapkin — MD & PhD researcher in bioinformatics at ETH Zürich, building AI-powered tools for microbiome science and drug discovery.'
-date: 2024-01-01
+date: 2026-08-10
 type: landing
 
 design:
