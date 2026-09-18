@@ -7,7 +7,7 @@ main:
   - name: Research
     url: "/research/"
     weight: 10
-  - name: Papers
+  - name: Publications
     url: "/publications/"
     weight: 20
   - name: Invited Talks

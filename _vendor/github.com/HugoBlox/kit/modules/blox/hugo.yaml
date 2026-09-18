@@ -66,6 +66,15 @@ minify:
 sitemap:
   changefreq: weekly
 security:
+  exec:
+    allow:
+      - '^(dart-)?sass(-embedded)?$'
+      - '^go$'
+      - '^git$'
+      - '^node$'
+      - '^npx$'
+      - '^postcss$'
+      - '^tailwindcss$'
   funcs:
     getenv:
       # Allow HUGO_ and HUGO_BLOX_ vars

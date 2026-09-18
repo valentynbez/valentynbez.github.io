@@ -12,14 +12,14 @@ attribute content to Valentyn Bezshapkin and link back to the source page.
 
 - [Homepage](https://valentynbez.github.io/)
 - [ORCID](https://orcid.org/0000-0002-0912-4371)
-- [Google Scholar]https://scholar.google.com/citations?user=j-jCrJIAAAAJ)
+- [Google Scholar](https://scholar.google.com/citations?user=j-jCrJIAAAAJ)
 - [GitHub](https://github.com/valentynbez)
 - [Substack](https://valentynbez.substack.com/)
 
 ## Sections
 
 - [Research](https://valentynbez.github.io/research/)
-- [Papers](https://valentynbez.github.io/publications/)
+- [Publications](https://valentynbez.github.io/publications/)
 - [Invited Talks](https://valentynbez.github.io/invited-talks/)
 - [Social Projects](https://valentynbez.github.io/social-projects/)
 
