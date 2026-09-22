@@ -21,7 +21,7 @@
   {{ end }}
 
   {{ if $has_attachments }}
-  <div class="pub-links flex flex-wrap space-x-3 mt-1">
+  <div class="pub-links flex flex-wrap gap-2 sm:gap-3 mt-1">
     {{ partial "page_links" (dict "page" $item "is_list" 1) }}
   </div>
   {{ end }}
@@ -41,7 +41,7 @@
   {{- $year -}}.
 
   {{ if $has_attachments }}
-  <div class="pub-links flex flex-wrap space-x-3 mt-1">
+  <div class="pub-links flex flex-wrap gap-2 sm:gap-3 mt-1">
     {{ partial "page_links" (dict "page" $item "is_list" 1) }}
   </div>
   {{ end }}

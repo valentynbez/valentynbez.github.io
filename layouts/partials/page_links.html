@@ -21,7 +21,7 @@
   "btn_video" "Video"
 }} 
 
-<div class="flex items-center gap-3" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: nowrap; overflow-x: auto;">
+<div class="flex items-center flex-wrap gap-2 sm:gap-3" style="display: flex; align-items: center; gap: 0.5rem 0.75rem; flex-wrap: wrap;">
 {{ range $built }}
   {{ if in .contexts $ctx }}
     {{ if in $allowedTypes .type }}
