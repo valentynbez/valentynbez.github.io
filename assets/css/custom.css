@@ -8,7 +8,6 @@ section#resume-biography,
 .resume-biography {
     padding-top: 2rem !important;
     margin-top: 0 !important;
-    padding-right: 0 !important;
 }
 
 /* Global text justification */
@@ -343,8 +342,8 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
 /* Responsive: collapse sidebar on small screens */
 @media (max-width: 640px) {
     .timeline-sidebar { display: none; }
-    .publications-list { padding-left: 0.25rem; }
-    .publications-timeline-wrapper { margin-top: 1rem; padding: 0 0.5rem; }
+    .publications-list { padding-left: 0; padding-right: 0; }
+    .publications-timeline-wrapper { margin-top: 1rem; padding: 0; }
 }
 
 /* Publication item format */
@@ -549,3 +548,21 @@ div[class*="md:grid-cols-[200px_auto]"] p {
 .dark .pub-summary-title a, .dark .pub-summary-role a {
     color: #4ade80 !important;
 }
+
+/* =============================================
+   8. MOBILE BODY TEXT MARGINS / PADDING
+   (Leaves margin for body text on mobile viewports while leaving navbar untouched)
+   ============================================= */
+@media (max-width: 768px) {
+    .page-body {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+    div#resume-biography,
+    section#resume-biography,
+    .resume-biography {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
