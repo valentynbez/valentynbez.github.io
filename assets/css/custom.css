@@ -21,6 +21,7 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
 }
 
 /* Force text size down inside prose containers */
@@ -311,22 +312,8 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
 .view-citation {
     position: relative;
     padding-left: 1.5rem !important;
-    opacity: 0;
-    transform: translateX(-12px);
-    animation: timelineFadeIn 0.5s ease-out forwards;
+    opacity: 1;
     margin-bottom: 0.4rem !important;
-}
-.view-citation:nth-child(1) { animation-delay: 0.05s; }
-.view-citation:nth-child(2) { animation-delay: 0.12s; }
-.view-citation:nth-child(3) { animation-delay: 0.19s; }
-.view-citation:nth-child(4) { animation-delay: 0.26s; }
-.view-citation:nth-child(5) { animation-delay: 0.33s; }
-
-@keyframes timelineFadeIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 .view-citation::before {
     content: '';
@@ -339,11 +326,96 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     background-color: #16a34a;
 }
 
-/* Responsive: collapse sidebar on small screens */
-@media (max-width: 640px) {
-    .timeline-sidebar { display: none; }
-    .publications-list { padding-left: 0; padding-right: 0; }
-    .publications-timeline-wrapper { margin-top: 1rem; padding: 0; }
+/* Responsive: smooth horizontal sticky pill timeline bar on small screens */
+@media (max-width: 768px) {
+    .publications-timeline-wrapper {
+        flex-direction: column;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .timeline-sidebar {
+        display: block !important;
+        position: sticky;
+        top: var(--navbar-height, 52px) !important;
+        z-index: 90 !important;
+        width: 100%;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(229, 231, 235, 0.6);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+        padding: 0.4rem 0.5rem;
+        scrollbar-width: none;
+        margin-top: 0 !important;
+        margin-bottom: 0.75rem;
+    }
+    .dark .timeline-sidebar {
+        background: rgba(17, 24, 39, 0.95);
+        border-top-color: rgba(55, 65, 81, 0.6);
+        border-bottom-color: rgba(55, 65, 81, 0.8);
+    }
+    .timeline-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .timeline-track {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+        padding-right: 0;
+        border-right: none;
+    }
+
+    .timeline-year-link {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem !important;
+        font-weight: 600;
+        color: #4b5563 !important;
+        background-color: #f3f4f6;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        text-decoration: none !important;
+        transition: all 0.2s ease;
+        line-height: 1;
+        white-space: nowrap;
+        transform: none !important;
+        border: 1px solid transparent;
+    }
+    .dark .timeline-year-link {
+        color: #d1d5db !important;
+        background-color: #1f2937;
+    }
+
+    .timeline-year-link::after {
+        display: none !important;
+    }
+
+    .timeline-year-link:hover,
+    .timeline-year-link.timeline-year-active {
+        color: #ffffff !important;
+        background-color: #16a34a !important;
+        border-color: #16a34a !important;
+        box-shadow: 0 2px 8px rgba(22, 163, 74, 0.35);
+        font-weight: 700;
+        transform: scale(1.04) !important;
+    }
+
+    .publications-list {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .pub-year-section {
+        scroll-margin-top: 115px;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* Publication item format */
@@ -408,10 +480,15 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     filter: invert(1) hue-rotate(180deg) !important;
 }
 
-/* Dimensions badge — enlarged hover zone so popover doesn't close */
+/* Sticky header z-index priority over all page badges */
+.page-header {
+    z-index: 100 !important;
+}
+
+/* Dimensions & Altmetric badges — keep z-index below sticky header & navbar */
 .__dimensions_badge_embed__ {
     position: relative !important;
-    z-index: 50 !important;
+    z-index: 10 !important;
     padding: 8px !important;        /* Invisible padding extends hover zone */
     margin: -8px !important;        /* Offset the padding visually */
 }
@@ -425,8 +502,10 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     bottom: -15px;
     z-index: -1;
 }
-.dimensions-citation-popover {
-    z-index: 20000 !important;
+.dimensions-citation-popover,
+.altmetric-popover,
+.altmetric-embed-popover {
+    z-index: 80 !important;
 }
 
 

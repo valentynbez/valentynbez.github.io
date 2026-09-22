@@ -74,29 +74,94 @@
 
 <script>
 (function() {
-  // Highlight current year in timeline as user scrolls
   const sections = document.querySelectorAll('.pub-year-section');
   const links = document.querySelectorAll('.timeline-year-link');
+  const sidebar = document.getElementById('pub-timeline-nav');
+
+  function getHeaderOffset() {
+    const header = document.querySelector('.page-header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 52;
+    const sidebarHeight = (window.innerWidth <= 768 && sidebar) ? sidebar.getBoundingClientRect().height : 0;
+    return headerHeight + sidebarHeight;
+  }
 
   function getActiveYear() {
+    const offset = getHeaderOffset();
     let active = null;
+    let maxTop = -Infinity;
+
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= 120) active = section.id;
+      if (rect.top <= offset + 40 && rect.bottom > offset + 10) {
+        if (rect.top > maxTop) {
+          maxTop = rect.top;
+          active = section.id;
+        }
+      }
     });
+
+    if (!active && sections.length > 0) {
+      if (window.pageYOffset < 100) {
+        active = sections[0].id;
+      } else {
+        let minDist = Infinity;
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const dist = Math.abs(rect.top - offset);
+          if (dist < minDist) {
+            minDist = dist;
+            active = section.id;
+          }
+        });
+      }
+    }
+
     return active;
   }
 
-  function updateActive() {
-    const activeId = getActiveYear();
+  let currentActiveId = null;
+
+  function setActive(activeId, scrollPill = true) {
+    if (!activeId || activeId === currentActiveId) return;
+    currentActiveId = activeId;
+
     links.forEach(link => {
       const href = link.getAttribute('href').replace('#', '');
-      link.classList.toggle('timeline-year-active', href === activeId);
+      const isActive = href === activeId;
+      link.classList.toggle('timeline-year-active', isActive);
+      if (isActive && scrollPill && window.innerWidth <= 768 && sidebar) {
+        link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
     });
   }
 
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  function updateActiveOnScroll() {
+    const activeId = getActiveYear();
+    setActive(activeId, true);
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').replace('#', '');
+      const targetSection = document.getElementById(targetId);
+      if (!targetSection) return;
+
+      setActive(targetId, true);
+
+      const offset = getHeaderOffset();
+      const elementPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset + 2;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+  updateActiveOnScroll();
 })();
 </script>
 
