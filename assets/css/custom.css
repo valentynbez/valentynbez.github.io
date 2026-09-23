@@ -1,4 +1,14 @@
 /* =============================================
+   0. FONT STACKS & DESIGN TOKENS
+   ============================================= */
+
+:root {
+    --font-display: 'Newsreader', 'Georgia', serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-data: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+}
+
+/* =============================================
    1. GLOBAL RESETS & BASE TYPOGRAPHY
    ============================================= */
 
@@ -18,6 +28,7 @@ section#resume-biography,
 
 /* Decrease font size globally */
 html, body {
+    font-family: var(--font-body) !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
     -webkit-font-smoothing: antialiased;
@@ -34,11 +45,25 @@ main#main p {
     line-height: 1.6 !important;
 }
 
-/* Force header sizes down */
-main#main h1, main#main .text-3xl, main#main .text-2xl { font-size: 1.5rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
-main#main h2, main#main .text-xl { font-size: 1.25rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
-main#main h3, main#main .text-lg { font-size: 1.1rem !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; }
+/* Force header sizes down — display serif for headings */
+main#main h1, main#main .text-3xl, main#main .text-2xl { font-family: var(--font-display) !important; font-size: 1.5rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
+main#main h2, main#main .text-xl { font-family: var(--font-display) !important; font-size: 1.25rem !important; margin-bottom: 0.5rem !important; line-height: 1.2 !important; }
+main#main h3, main#main .text-lg { font-family: var(--font-display) !important; font-size: 1.1rem !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; }
 main#main .text-primary-600 { font-size: 1.25rem !important; color: #333 !important; font-weight: 500 !important; }
+
+/* Display serif on all headings site-wide */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display) !important;
+}
+
+/* Monospace for data-like details */
+.pub-date,
+.pub-year-badge,
+.timeline-year-link,
+code, pre code,
+.pub-journal {
+    font-family: var(--font-data) !important;
+}
 
 /* =============================================
    2. PROFILE & AVATAR
@@ -117,7 +142,7 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     transition: color 0.2s;
 }
 .navbar-brand:hover {
-    color: #16a34a !important;
+    color: #059669 !important;
 }
 
 /* Dropdown container */
@@ -183,21 +208,21 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     color: #e5e7eb;
 }
 .nav-dropdown-link:hover {
-    background-color: #f0fdf4 !important;
-    color: #16a34a !important;
+    background-color: #ecfdf5 !important;
+    color: #059669 !important;
 }
 .dark .nav-dropdown-link:hover {
-    background-color: rgba(22,163,106,0.12) !important;
-    color: #4ade80 !important;
+    background-color: rgba(5,150,105,0.12) !important;
+    color: #34d399 !important;
 }
 .nav-dropdown-link.active {
-    color: #16a34a !important;
+    color: #059669 !important;
     font-weight: 600 !important;
-    background-color: #f0fdf4 !important;
+    background-color: #ecfdf5 !important;
 }
 .dark .nav-dropdown-link.active {
-    color: #4ade80 !important;
-    background-color: rgba(22,163,106,0.12) !important;
+    color: #34d399 !important;
+    background-color: rgba(5,150,105,0.12) !important;
 }
 
 /* =============================================
@@ -272,12 +297,12 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
 }
 .timeline-year-link:hover,
 .timeline-year-link.timeline-year-active {
-    color: #16a34a !important;
+    color: #059669 !important;
     transform: translateX(-3px);
 }
 .timeline-year-link.timeline-year-active::after,
 .timeline-year-link:hover::after {
-    background-color: #16a34a;
+    background-color: #059669;
     transform: translateY(-50%) scale(1.4);
 }
 
@@ -299,7 +324,7 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
 .pub-year-badge {
     font-size: 1rem;
     font-weight: 700;
-    color: #16a34a;
+    color: #059669;
     letter-spacing: 0.04em;
 }
 .pub-year-articles {
@@ -323,7 +348,7 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #16a34a;
+    background-color: #059669;
 }
 
 /* Responsive: smooth horizontal sticky pill timeline bar on small screens */
@@ -399,9 +424,9 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     .timeline-year-link:hover,
     .timeline-year-link.timeline-year-active {
         color: #ffffff !important;
-        background-color: #16a34a !important;
-        border-color: #16a34a !important;
-        box-shadow: 0 2px 8px rgba(22, 163, 74, 0.35);
+        background-color: #059669 !important;
+        border-color: #059669 !important;
+        box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35);
         font-weight: 700;
         transform: scale(1.04) !important;
     }
@@ -426,7 +451,7 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     margin-bottom: 0.15rem;
 }
 .pub-title a { text-decoration: none; color: inherit; }
-.pub-title a:hover { text-decoration: underline; color: #16a34a; }
+.pub-title a:hover { text-decoration: underline; color: #059669; }
 
 .pub-authors, .pub-journal { font-size: 0.82rem; color: #6b7280; margin-bottom: 0.1rem; }
 .pub-journal { font-style: italic; }
@@ -445,7 +470,7 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     transition: color 0.15s ease-in-out !important;
 }
 .pub-title-hover:hover {
-    color: #16a34a !important; /* Green highlight */
+    color: #059669 !important; /* Emerald accent */
 }
 
 /* =============================================
@@ -616,11 +641,11 @@ div[class*="md:grid-cols-[200px_auto]"] p {
 
 /* Style links within summaries */
 .pub-summary-title a, .pub-summary-role a {
-    color: #16a34a !important;
+    color: #059669 !important;
     text-decoration: underline !important;
 }
 .dark .pub-summary-title a, .dark .pub-summary-role a {
-    color: #4ade80 !important;
+    color: #34d399 !important;
 }
 
 /* =============================================
