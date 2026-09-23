@@ -1,0 +1,30 @@
+{{ $sig := site.Data.signature }}
+{{ if not $sig }}
+  {{ errorf "Signature error: site.Data.signature not found in data/signature.yaml" }}
+{{ end }}
+
+{{ $orf := strings.TrimSpace (default "" $sig.orf) }}
+{{ $translation := strings.TrimSpace (default "" $sig.translation) }}
+{{ $left_flank := strings.TrimSpace (default "" $sig.left_flank) }}
+{{ $start_codon := strings.TrimSpace (default "" $sig.start_codon) }}
+{{ $stop_codon := strings.TrimSpace (default "" $sig.stop_codon) }}
+{{ $right_flank := strings.TrimSpace (default "" $sig.right_flank) }}
+
+{{/* Template assertion: ORF length must equal 3 * translation length */}}
+{{ $orf_len := len $orf }}
+{{ $trans_len := len $translation }}
+{{ if ne $orf_len (mul 3 $trans_len) }}
+  {{ errorf "Signature error: len(orf) [%d] != 3 * len(translation) [%d]" $orf_len (mul 3 $trans_len) }}
+{{ end }}
+
+{{ $offset_ch := add (len $left_flank) (len $start_codon) }}
+
+<div class="sig-strip" tabindex="0" role="region" aria-label="Decorative DNA sequence">
+  <span class="sr-only">Decorative DNA sequence whose hidden reading frame translates to the name Valentyn.</span>
+  <div class="sig-window" aria-hidden="true">
+    <div class="sig-track">
+      <div class="sig-seq"><span class="sig-flank sig-flank-left">{{ range split $left_flank "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-start">{{ range split $start_codon "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-orf">{{ range split $orf "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-stop">{{ range split $stop_codon "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-flank sig-flank-right">{{ range split $right_flank "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span></div>
+      <div class="sig-trans"><span class="sig-offset" style="width: {{ $offset_ch }}ch;"></span>{{ range split $translation "" }}<span class="sig-aa">{{ . }}</span>{{ end }}</div>
+    </div>
+  </div>
+</div>

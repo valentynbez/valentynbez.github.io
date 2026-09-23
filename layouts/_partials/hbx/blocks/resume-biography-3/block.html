@@ -193,6 +193,9 @@
             {{ end }}
           {{ end }}
 
+          {{/* Computational Biology Signature Sequence Strip */}}
+          {{ partial "signature/sequence-strip.html" . }}
+
           {{/* Name with optional ruby pronunciation */}}
           {{ if and $profile.title $name_pronunciation }}
             <h1 class="{{ $name_class }} font-black text-gray-900 dark:text-white leading-tight">
