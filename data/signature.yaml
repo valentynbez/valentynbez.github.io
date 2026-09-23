@@ -6,7 +6,8 @@ right_flank: "TTCGCAGGTTCAAGCGTACCGGATTAGCCTGAAGTCTTAGGCATCGTACCAGTTAAGCGGA"
 translation: "VALENTYN"
 
 divider:
-  viewBox: "0 0 1000 44"
+  viewBox: "0 0 1000 48"
+  mobileViewBox: "275 0 460 48"
   prophage:
     start: 385
     end: 625
