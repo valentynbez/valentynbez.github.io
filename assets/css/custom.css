@@ -809,3 +809,98 @@ div[class*="md:grid-cols-[200px_auto]"] p {
     margin-top: 0.35rem !important;
 }
 
+/* =============================================
+   10. GENOME MAP SECTION DIVIDER
+   ============================================= */
+
+.sig-divider-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.25rem 0 0.5rem;
+    overflow: hidden;
+}
+
+.sig-genome-divider {
+    width: 100%;
+    max-width: 960px;
+    height: 44px;
+    display: block;
+}
+
+.sig-genome-divider .backbone {
+    stroke: #d1d5db;
+}
+
+.dark .sig-genome-divider .backbone {
+    stroke: #374151;
+}
+
+.sig-genome-divider .gene-host {
+    fill: rgba(229, 231, 235, 0.5);
+    stroke: #9ca3af;
+    stroke-width: 1.2;
+    transition: stroke 0.2s, fill 0.2s;
+}
+
+.dark .sig-genome-divider .gene-host {
+    fill: rgba(55, 65, 81, 0.5);
+    stroke: #6b7280;
+}
+
+.sig-genome-divider .gene-host:hover {
+    fill: rgba(209, 213, 219, 0.8);
+    stroke: #6b7280;
+}
+
+.dark .sig-genome-divider .gene-host:hover {
+    fill: rgba(75, 85, 99, 0.8);
+    stroke: #9ca3af;
+}
+
+.sig-genome-divider .prophage-box {
+    stroke: var(--base-A, #1D9E75);
+    stroke-opacity: 0.6;
+    stroke-dasharray: 4 3;
+    stroke-width: 1.2;
+    fill: var(--base-A, #1D9E75);
+    fill-opacity: 0.06;
+}
+
+.dark .sig-genome-divider .prophage-box {
+    stroke: var(--base-A, #2ecc9a);
+    fill: var(--base-A, #2ecc9a);
+    fill-opacity: 0.1;
+}
+
+.sig-genome-divider .prophage-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 8.5px;
+    font-weight: 600;
+    fill: var(--base-A, #1D9E75);
+    letter-spacing: 0.08em;
+}
+
+.dark .sig-genome-divider .prophage-label {
+    fill: var(--base-A, #2ecc9a);
+}
+
+.sig-genome-divider .gene-prophage {
+    fill: var(--base-A, #1D9E75);
+    fill-opacity: 0.25;
+    stroke: var(--base-A, #1D9E75);
+    stroke-width: 1.4;
+    transition: fill-opacity 0.2s, stroke-width 0.2s;
+}
+
+.dark .sig-genome-divider .gene-prophage {
+    fill: var(--base-A, #2ecc9a);
+    fill-opacity: 0.32;
+    stroke: var(--base-A, #2ecc9a);
+}
+
+.sig-genome-divider .gene-prophage:hover {
+    fill-opacity: 0.45;
+}
+

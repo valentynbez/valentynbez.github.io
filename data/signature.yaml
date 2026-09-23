@@ -4,3 +4,27 @@ orf:         "GTGGCGCTGGAAAACACCTATAAC"   # V A L E N T Y N
 stop_codon:  "TAA"
 right_flank: "TTCGCAGGTTCAAGCGTACCGGATTAGCCTGAAGTCTTAGGCATCGTACCAGTTAAGCGGA"
 translation: "VALENTYN"
+
+divider:
+  viewBox: "0 0 1000 44"
+  prophage:
+    start: 385
+    end: 625
+    label: "prophage"
+  genes:
+    # Coords: [start, end, strand (+1 forward, -1 reverse)]
+    - [20, 95, 1]
+    - [110, 185, 1]
+    - [200, 275, -1]
+    - [290, 365, 1]
+    # Prophage region (5 genes, highlighted in base green)
+    - [395, 435, 1]
+    - [440, 480, 1]
+    - [485, 530, -1]
+    - [535, 575, 1]
+    - [580, 615, 1]
+    # Flanking host genes
+    - [635, 715, -1]
+    - [730, 810, -1]
+    - [825, 900, 1]
+    - [915, 980, 1]

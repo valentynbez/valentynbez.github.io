@@ -1,0 +1,44 @@
+{{ $sig := site.Data.signature }}
+{{ $divider := index $sig "divider" }}
+{{ if $divider }}
+  {{ $viewBox := index $divider "viewBox" | default "0 0 1000 44" }}
+  {{ $prophage := index $divider "prophage" }}
+  {{ $p_start := index $prophage "start" | default 385 }}
+  {{ $p_end := index $prophage "end" | default 625 }}
+  {{ $p_label := index $prophage "label" | default "prophage" }}
+  {{ $genes := index $divider "genes" }}
+
+  <div class="sig-divider-wrapper" aria-hidden="true">
+    <svg class="sig-genome-divider" width="100%" height="44" viewBox="{{ $viewBox }}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      {{/* Central backbone line */}}
+      <line x1="10" y1="22" x2="990" y2="22" class="backbone" stroke-width="1.5" stroke-linecap="round" />
+
+      {{/* Prophage dashed boundary box and monospace label */}}
+      {{ $box_w := sub $p_end $p_start }}
+      {{ $label_x := add $p_start (div $box_w 2) }}
+      <rect x="{{ $p_start }}" y="8" width="{{ $box_w }}" height="28" rx="5" class="prophage-box" />
+      <text x="{{ $label_x }}" y="7" text-anchor="middle" class="prophage-label">{{ $p_label }}</text>
+
+      {{/* Gene arrows */}}
+      {{ range $genes }}
+        {{ $x1 := index . 0 }}
+        {{ $x2 := index . 1 }}
+        {{ $strand := index . 2 }}
+        {{ $is_prophage := and (ge $x1 $p_start) (le $x2 $p_end) }}
+        {{ $cls := cond $is_prophage "gene-prophage" "gene-host" }}
+
+        {{ $gene_w := sub $x2 $x1 }}
+        {{ $head := 10 }}
+        {{ if lt $gene_w 16 }}
+          {{ $head = div $gene_w 2 }}
+        {{ end }}
+
+        {{ if gt $strand 0 }}
+          <path d="M {{ $x1 }} 16 L {{ sub $x2 $head }} 16 L {{ $x2 }} 22 L {{ sub $x2 $head }} 28 L {{ $x1 }} 28 Z" class="{{ $cls }}" />
+        {{ else }}
+          <path d="M {{ add $x1 $head }} 16 L {{ $x2 }} 16 L {{ $x2 }} 28 L {{ add $x1 $head }} 28 L {{ $x1 }} 22 Z" class="{{ $cls }}" />
+        {{ end }}
+      {{ end }}
+    </svg>
+  </div>
+{{ end }}
