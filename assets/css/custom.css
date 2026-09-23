@@ -101,20 +101,7 @@ img.avatar, .avatar-circle, .resume-biography-3 img {
 
 /* Status emoji badge on avatar */
 .avatar-emoji {
-    position: absolute !important;
-    bottom: 6px !important;
-    right: 35px !important;
-    width: 3rem !important;
-    height: 3rem !important;
-    background: white !important;
-    border-radius: 9999px !important;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.18) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.7rem !important;
-    line-height: 1 !important;
-    border: 2px solid #e5e7eb !important;
+    display: none !important;
 }
 
 /* Hide decorative backgrounds */
