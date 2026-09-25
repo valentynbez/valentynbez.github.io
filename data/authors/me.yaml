@@ -43,14 +43,14 @@ interests:
 education:
   - degree: PhD in Bioinformatics
     institution: ETH Zürich, Switzerland
-    start: 2022-10-01
-    end: 2026-12-03
+    year: "2022-2026"
     summary: |
       Sunagawa Lab, Institute of Microbiology. Research on human gut metagenome
       and viromics using deep learning and computational methods. Developing novel
       pipelines for functional annotation of metagenomes.
   - degree: Doctor of Medicine (MD)
     institution: Jagiellonian University Medical College<br>Kraków, Poland
+    year: "2015-2021"
     summary: |
       Medical degree with exposure to clinical research in critical care,
       urology, and microbiome science.
