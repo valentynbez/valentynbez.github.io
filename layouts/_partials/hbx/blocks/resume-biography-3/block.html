@@ -316,10 +316,35 @@
             {{ else if in (slice "http" "https") $scheme }}
               {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
             {{ end }}
+            {{/* Determine platform for brand hover colors */}}
+            {{ $platform := "" }}
+            {{ $iconLower := lower $iconName }}
+            {{ $urlLower := lower $linkUrl }}
+            {{ if or (in $iconLower "github") (in $urlLower "github.com") }}
+              {{ $platform = "github" }}
+            {{ else if or (in $iconLower "scholar") (in $urlLower "scholar.google") }}
+              {{ $platform = "scholar" }}
+            {{ else if or (in $iconLower "orcid") (in $urlLower "orcid.org") }}
+              {{ $platform = "orcid" }}
+            {{ else if or (in $iconLower "substack") (in $urlLower "substack.com") }}
+              {{ $platform = "substack" }}
+            {{ else if or (in $iconLower "envelope") (in $iconLower "at-symbol") (in $iconLower "mail") (hasPrefix $urlLower "mailto:") }}
+              {{ $platform = "email" }}
+            {{ else if or (in $iconLower "linkedin") (in $urlLower "linkedin.com") }}
+              {{ $platform = "linkedin" }}
+            {{ else if or (in $iconLower "twitter") (in $iconLower "x-twitter") (in $urlLower "twitter.com") (in $urlLower "x.com") }}
+              {{ $platform = "twitter" }}
+            {{ else if or (in $iconLower "researchgate") (in $urlLower "researchgate.net") }}
+              {{ $platform = "researchgate" }}
+            {{ else if or (in $iconLower "youtube") (in $urlLower "youtube.com") }}
+              {{ $platform = "youtube" }}
+            {{ end }}
+
             <a href="{{ $linkUrl | safeURL }}" {{ $target | safeHTMLAttr }} 
                aria-label="{{ $iconName }}"
                {{ if $linkLabel }} title="{{ $linkLabel }}"{{ end }}
-               class="w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 
+               class="social-btn {{ with $platform }}social-btn-{{ . }}{{ else }}social-btn-default{{ end }}
+                      w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 
                       shadow-md hover:shadow-xl hover:scale-110 hover:-translate-y-1 
                       transition-all duration-300 border border-gray-200 dark:border-gray-700">
               {{ partial "functions/get_icon" (dict "name" $iconName "attributes" "class=\"w-6 h-6\"")  }}
@@ -449,12 +474,15 @@
                   </p>
                   {{ end }}
                   {{ if $year }}
-                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">{{ $year }}</p>
+                    <p class="education-date text-sm font-semibold mt-1 mb-1">{{ $year }}</p>
+                  {{ else if and $start $end }}
+                    {{ $sYear := $start }}
+                    {{ $eYear := $end }}
+                    {{ if ge (len $start) 4 }}{{ $sYear = substr $start 0 4 }}{{ end }}
+                    {{ if ge (len $end) 4 }}{{ $eYear = substr $end 0 4 }}{{ end }}
+                    <p class="education-date text-sm font-semibold mt-1 mb-1">{{ $sYear }}-{{ $eYear }}</p>
                   {{ else if $start }}
-                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">
-                      {{ $start }}
-                      {{ if $end }}<br>{{ $end }}{{ end }}
-                    </p>
+                    <p class="education-date text-sm font-semibold mt-1 mb-1">{{ $start }}</p>
                   {{ end }}
                   {{ if $institution }}
                     <p class="text-gray-700 dark:text-gray-300 text-base">{{ $institution | safeHTML }}</p>
