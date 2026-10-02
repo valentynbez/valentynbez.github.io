@@ -102,6 +102,12 @@
   {{ end }}
 
   {{/* Progressive Web App (PWA) Icon / Favicons */}}
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="32x32" />
+  <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" />
+  {{ $icon_svg := resources.Get "media/icon.svg" }}
+  {{ with $icon_svg }}
+    <link rel="icon" type="image/svg+xml" href="{{ .RelPermalink }}" />
+  {{ end }}
   {{ $icon_32 := partial "functions/get_site_icon" 32 }}
   {{ $icon_48 := partial "functions/get_site_icon" 48 }}
   {{ $icon_192 := partial "functions/get_site_icon" 192 }}
