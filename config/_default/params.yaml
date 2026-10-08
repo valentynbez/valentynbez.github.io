@@ -199,12 +199,14 @@ hugoblox:
   # Traffic and behavior analytics
   # ────────────────────────────────────────────────────────────────────────────
   analytics:
+    # GoatCounter: 100% Free forever, privacy-first, zero cookies, referrer & campaign tracking
+    # Sign up free in seconds at https://www.goatcounter.com (site code: e.g. "valentynbez")
+    goatcounter:
+      code: "valentynbez"
     google:
       measurement_id: ""                # Google Analytics 4: G-XXXXXXXXXX
     google_tag_manager:
       container_id: ""                  # GTM-XXXXXXX
-    plausible:
-      domain: ""
     fathom:
       site_id: ""
     pirsch:

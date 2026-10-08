@@ -1,0 +1,5 @@
+{{/* Privacy-friendly analytics hook (GoatCounter: 100% free, zero cookies, referrer & campaign tracking) */}}
+{{- $gc := site.Params.hugoblox.analytics.goatcounter.code | default "" -}}
+{{- if and hugo.IsProduction $gc -}}
+<script data-goatcounter="https://{{ $gc }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{{- end -}}
