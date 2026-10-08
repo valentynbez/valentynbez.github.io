@@ -10,7 +10,7 @@ attribute content to Valentyn Bezshapkin and link back to the source page.
 
 ## Profile
 
-- [Homepage](https://valentynbez.github.io/)
+- [Homepage](https://valentynbez.com/)
 - [LinkedIn](https://www.linkedin.com/in/valentynbez)
 - [ORCID](https://orcid.org/0000-0002-0912-4371)
 - [Google Scholar](https://scholar.google.com/citations?user=j-jCrJIAAAAJ)
@@ -19,20 +19,20 @@ attribute content to Valentyn Bezshapkin and link back to the source page.
 
 ## Sections
 
-- [Research](https://valentynbez.github.io/research/)
-- [Publications](https://valentynbez.github.io/publications/)
-- [Invited Talks](https://valentynbez.github.io/invited-talks/)
-- [Social Projects](https://valentynbez.github.io/social-projects/)
+- [Research](https://valentynbez.com/research/)
+- [Publications](https://valentynbez.com/publications/)
+- [Invited Talks](https://valentynbez.com/invited-talks/)
+- [Social Projects](https://valentynbez.com/social-projects/)
 
 ## Selected publications
 
-- [Uncovering Cas9 PAM diversity through metagenomic mining and machine learning (2026)](https://valentynbez.github.io/publications/cas9-pam-diversity-2026/)
-- [Scikit-bio: a fundamental Python library for biological omic data analysis (2025)](https://valentynbez.github.io/publications/scikit-bio-2025/)
-- [Determinants of the microbiome spatial variability in chronic rhinosinusitis (2024)](https://valentynbez.github.io/publications/determinants-microbiome-rhinosinusitis-2024/)
-- [Predictors of outcomes of patients ≥ 80 years old admitted to ICUs in Poland — VIP2 study (2024)](https://valentynbez.github.io/publications/predictors-vip2-2024/)
-- [Comprehensive functional annotation of metagenomes using deep learning (2023)](https://valentynbez.github.io/publications/msystems-2023/)
-- [Diagnostic accuracy of bimanual palpation in bladder cancer patients (2023)](https://valentynbez.github.io/publications/diagnostic-accuracy-bladder-2023/)
-- [Multi-species probiotics change gut microbiota function in postmenopausal women with obesity (2022)](https://valentynbez.github.io/publications/probiotics-2022/)
+- [Uncovering Cas9 PAM diversity through metagenomic mining and machine learning (2026)](https://valentynbez.com/publications/cas9-pam-diversity-2026/)
+- [Scikit-bio: a fundamental Python library for biological omic data analysis (2025)](https://valentynbez.com/publications/scikit-bio-2025/)
+- [Determinants of the microbiome spatial variability in chronic rhinosinusitis (2024)](https://valentynbez.com/publications/determinants-microbiome-rhinosinusitis-2024/)
+- [Predictors of outcomes of patients ≥ 80 years old admitted to ICUs in Poland — VIP2 study (2024)](https://valentynbez.com/publications/predictors-vip2-2024/)
+- [Comprehensive functional annotation of metagenomes using deep learning (2023)](https://valentynbez.com/publications/msystems-2023/)
+- [Diagnostic accuracy of bimanual palpation in bladder cancer patients (2023)](https://valentynbez.com/publications/diagnostic-accuracy-bladder-2023/)
+- [Multi-species probiotics change gut microbiota function in postmenopausal women with obesity (2022)](https://valentynbez.com/publications/probiotics-2022/)
 
 ## Contact
 
