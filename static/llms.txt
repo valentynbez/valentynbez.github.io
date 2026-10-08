@@ -11,6 +11,7 @@ attribute content to Valentyn Bezshapkin and link back to the source page.
 ## Profile
 
 - [Homepage](https://valentynbez.github.io/)
+- [LinkedIn](https://www.linkedin.com/in/valentynbez)
 - [ORCID](https://orcid.org/0000-0002-0912-4371)
 - [Google Scholar](https://scholar.google.com/citations?user=j-jCrJIAAAAJ)
 - [GitHub](https://github.com/valentynbez)

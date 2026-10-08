@@ -23,6 +23,9 @@ links:
   - icon: at-symbol
     url: mailto:valentyn.bezshapkin@micro.biol.ethz.ch
     label: E-mail Me
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/valentynbez
+    label: LinkedIn
   - icon: brands/github
     url: https://github.com/valentynbez
   - icon: academicons/google-scholar
