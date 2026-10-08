@@ -13,11 +13,11 @@ sections:
     content:
       username: me
       text: |-
-        **Welcome!** I develop computational methods at the intersection of metagenomics, deep learning, and microbiome science — translating massive sequencing datasets into biological insights.
+        **MD turned computational biologist.** I build machine-learning models and production-grade pipelines that turn large-scale sequencing data into biological insight, from gene function to phage–host interactions.
 
-        At [Sunagawa Lab (ETH Zürich)](https://micro.biol.ethz.ch/research/sunagawa.html), I work on deciphering phage activity across environments and elucidating their functional potential. I had contributed to the development of **QIIME 2** and **scikit-bio**, two widely-used open-source bioinformatics toolkits.
+        At [Sunagawa Lab (ETH Zürich)](https://micro.biol.ethz.ch/research/sunagawa.html), I develop methods to detect phages in metagenomes, predict their hosts and map their functional potential. I have contributed to **QIIME 2** and **scikit-bio** (Nature Methods, 2025), two widely used open-source bioinformatics toolkits, and my datasets and pipelines underpin work published in Nature Communications and mSystems.
 
-        **Looking Ahead:** As I approach the conclusion of my PhD, I am actively exploring full-time opportunities and advisory roles where I can bridge the gap between deep tech and commercial impact. I am specifically looking to bring my technical expertise to **Biotech R&D** or **Venture Capital**. Let's connect!
+        **Looking ahead:** I'm completing my PhD and looking for computational biology and ML roles in pharma and tech R&D, where models need to hold up on real data at scale. My clinical training lets me work comfortably across the boundary between biology, data and the clinic, and I'm also open to strategy roles at that intersection. Based in Zürich. [Get in touch](mailto:[EMAIL_ADDRESS]').
       button:
         text: Download CV
         url: uploads/ValentynBezshapkin_CV.pdf
