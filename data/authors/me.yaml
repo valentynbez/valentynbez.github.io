@@ -37,11 +37,10 @@ links:
     label: Substack
 
 interests:
-  - Metagenomics
-  - Human Gut Microbiome
-  - Machine Learning for Biology
-  - Bioinformatics & Computational Biology
-  - Viromics
+  - ML for Genomics
+  - Protein Representation Learning
+  - Scalable Bioinformatics
+  - Translational Data
 
 education:
   - degree: PhD in Bioinformatics

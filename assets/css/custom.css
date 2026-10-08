@@ -724,6 +724,10 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
 .sig-strip .b-G { color: var(--base-G); }
 .sig-strip .b-T { color: var(--base-T); }
 
+.sig-seq span::before {
+    content: attr(data-b);
+}
+
 /* Rest state: quiet colors, translation hidden */
 .sig-strip .sig-seq {
     opacity: 0.65;
@@ -746,6 +750,10 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     font-size: 10.5px;
     color: var(--sig-trans-color);
     letter-spacing: 0;
+}
+
+.sig-strip .sig-aa::before {
+    content: attr(data-aa);
 }
 
 /* Reveal on hover, focus-within, and focus-visible */
@@ -810,6 +818,50 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     overflow: hidden;
 }
 
+.sig-divider-inner {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .sig-divider-inner {
+        max-width: 440px;
+    }
+}
+
+.sig-prophage-label {
+    position: absolute;
+    top: 0px;
+    left: 50.5%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--base-A, #1D9E75);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    z-index: 1;
+}
+
+.sig-prophage-label::before {
+    content: attr(data-label);
+}
+
+.dark .sig-prophage-label {
+    color: var(--base-A, #2ecc9a);
+}
+
+@media (max-width: 640px) {
+    .sig-prophage-label {
+        left: 50%;
+        font-size: 10px;
+    }
+}
+
 .sig-genome-divider {
     width: 100%;
     max-width: 960px;
@@ -835,9 +887,6 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
         height: 48px;
         -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
         mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-    }
-    .sig-genome-mobile .prophage-label {
-        font-size: 10px;
     }
 }
 
@@ -887,18 +936,6 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     stroke: var(--base-A, #2ecc9a);
     fill: var(--base-A, #2ecc9a);
     fill-opacity: 0.12;
-}
-
-.sig-genome-divider .prophage-label {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 9.5px;
-    font-weight: 600;
-    fill: var(--base-A, #1D9E75);
-    letter-spacing: 0.08em;
-}
-
-.dark .sig-genome-divider .prophage-label {
-    fill: var(--base-A, #2ecc9a);
 }
 
 .sig-genome-divider .gene-prophage {

@@ -10,21 +10,20 @@
 {{ $stop_codon := strings.TrimSpace (default "" $sig.stop_codon) }}
 {{ $right_flank := strings.TrimSpace (default "" $sig.right_flank) }}
 
-{{/* Template assertion: ORF length must equal 3 * translation length */}}
-{{ $orf_len := len $orf }}
+{{/* Template assertion: coding length (start codon + ORF) must equal 3 * translation length */}}
+{{ $coding_len := add (len $start_codon) (len $orf) }}
 {{ $trans_len := len $translation }}
-{{ if ne $orf_len (mul 3 $trans_len) }}
-  {{ errorf "Signature error: len(orf) [%d] != 3 * len(translation) [%d]" $orf_len (mul 3 $trans_len) }}
+{{ if ne $coding_len (mul 3 $trans_len) }}
+  {{ errorf "Signature error: coding length (start_codon + orf) [%d] != 3 * len(translation) [%d]" $coding_len (mul 3 $trans_len) }}
 {{ end }}
 
-{{ $offset_ch := add (len $left_flank) (len $start_codon) }}
+{{ $offset_ch := len $left_flank }}
 
-<div class="sig-strip" tabindex="0" role="region" aria-label="Decorative DNA sequence">
-  <span class="sr-only">Decorative DNA sequence whose hidden reading frame translates to the name Valentyn.</span>
-  <div class="sig-window" aria-hidden="true">
+<div class="sig-strip" tabindex="0" aria-hidden="true">
+  <div class="sig-window">
     <div class="sig-track">
-      <div class="sig-seq"><span class="sig-flank sig-flank-left">{{ range split $left_flank "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-start">{{ range split $start_codon "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-orf">{{ range split $orf "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-stop">{{ range split $stop_codon "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span><span class="sig-flank sig-flank-right">{{ range split $right_flank "" }}<span class="b-{{ . }}">{{ . }}</span>{{ end }}</span></div>
-      <div class="sig-trans"><span class="sig-offset" style="width: {{ $offset_ch }}ch;"></span>{{ range split $translation "" }}<span class="sig-aa">{{ . }}</span>{{ end }}</div>
+      <div class="sig-seq"><span class="sig-flank sig-flank-left">{{ range split $left_flank "" }}<span class="b-{{ . }}" data-b="{{ . }}"></span>{{ end }}</span><span class="sig-start">{{ range split $start_codon "" }}<span class="b-{{ . }}" data-b="{{ . }}"></span>{{ end }}</span><span class="sig-orf">{{ range split $orf "" }}<span class="b-{{ . }}" data-b="{{ . }}"></span>{{ end }}</span><span class="sig-stop">{{ range split $stop_codon "" }}<span class="b-{{ . }}" data-b="{{ . }}"></span>{{ end }}</span><span class="sig-flank sig-flank-right">{{ range split $right_flank "" }}<span class="b-{{ . }}" data-b="{{ . }}"></span>{{ end }}</span></div>
+      <div class="sig-trans"><span class="sig-offset" style="width: {{ $offset_ch }}ch;"></span>{{ range split $translation "" }}<span class="sig-aa" data-aa="{{ . }}"></span>{{ end }}</div>
     </div>
   </div>
 </div>

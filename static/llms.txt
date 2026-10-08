@@ -3,7 +3,8 @@
 > MD & PhD researcher in bioinformatics at ETH Zürich (Sunagawa Lab), building
 > AI-powered tools for microbiome science and drug discovery. Work spans
 > metagenomics, deep learning, phage biology, and open-source scientific
-> software (contributor to QIIME 2 and scikit-bio).
+> software (contributor to QIIME 2 and scikit-bio). Defending December 2026,
+> available from early 2027, based in Zürich.
 
 This site is public and AI crawlers are welcome to read and cite it. Please
 attribute content to Valentyn Bezshapkin and link back to the source page.
@@ -37,3 +38,5 @@ attribute content to Valentyn Bezshapkin and link back to the source page.
 ## Contact
 
 - Email: valentyn.bezshapkin@micro.biol.ethz.ch
+- LinkedIn: https://www.linkedin.com/in/valentynbez
+- Availability: Defending December 2026, available from early 2027 (based in Zürich)
