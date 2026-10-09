@@ -47,9 +47,17 @@ outputs:
   section: [HTML, RSS]
 imaging:
   resampleFilter: lanczos
-  quality: 90
+  quality: 82
   anchor: smart
   hint: picture
+minify:
+  disableCSS: false
+  disableHTML: false
+  disableJS: false
+  disableJSON: false
+  disableSVG: false
+  disableXML: false
+  minifyOutput: true
 timeout: 600000
 taxonomies:
   author: authors

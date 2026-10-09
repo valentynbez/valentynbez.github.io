@@ -143,10 +143,21 @@
 
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{/* Typography: Newsreader (display serif), Inter (body); system monospace for data/code */}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700;0,6..72,800;1,6..72,400&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+  {{/* Resource Hints for Third-Party Domains */}}
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://badge.dimensions.ai" />
+  <link rel="dns-prefetch" href="https://d1bxh8uas1mnw7.cloudfront.net" />
+  <link rel="dns-prefetch" href="https://gc.zgo.at" />
+
+  {{/* Typography: Newsreader (display serif), Inter (body); loaded asynchronously without blocking rendering */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700;0,6..72,800;1,6..72,400&family=Inter:wght@300..700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700;0,6..72,800;1,6..72,400&family=Inter:wght@300..700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700;0,6..72,800;1,6..72,400&family=Inter:wght@300..700&display=swap" />
+  </noscript>
 
   {{/* Get page image for sharing. */}}
   {{ $sharing_image := resources.GetMatch (path.Join "media" "sharing.*") }}

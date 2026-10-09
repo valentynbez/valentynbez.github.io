@@ -38,6 +38,6 @@
     "email" "valentyn.bezshapkin@micro.biol.ethz.ch"
     "worksFor" (dict "@type" "Organization" "name" (index $author.affiliations 0).name "url" (index $author.affiliations 0).url)
     "sameAs" $sameAs
-    | jsonify (dict "indent" "  ") | safeJS }}
+    | jsonify | safeJS }}
   </script>
 {{ end }}

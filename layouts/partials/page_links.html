@@ -86,8 +86,6 @@
 {{ if $doi }}
 <div class="ml-auto flex items-center gap-2 justify-end" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
   <span class="__dimensions_badge_embed__" data-doi="{{ $doi }}" data-hide-zero-citations="true" data-style="small_rectangle"></span>
-  <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
-  <div data-badge-popover="bottom" data-badge-type="donut" data-doi="{{ $doi }}" class="altmetric-embed" style="transform: scale(0.85); transform-origin: right center; display: inline-block; margin-top: -2px;"></div>
-  <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+  <div data-badge-type="donut" data-doi="{{ $doi }}" class="altmetric-embed" style="transform: scale(0.85); transform-origin: right center; display: inline-block; margin-top: -2px;"></div>
 </div>
 {{ end }}
