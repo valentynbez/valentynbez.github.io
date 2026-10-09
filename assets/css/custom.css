@@ -587,11 +587,24 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     line-height: 1.6 !important;
 }
 
-/* Social icons sizing and spacing */
+/* Social icons sizing and spacing (3 per row) */
+.resume-biography .social-links,
+.resume-biography .flex.justify-center.gap-4 {
+    display: grid !important;
+    grid-template-columns: repeat(3, auto) !important;
+    gap: 0.75rem !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.resume-biography .social-links a,
 .resume-biography .flex.justify-center.gap-4 a {
     width: 2.5rem !important;
     height: 2.5rem !important;
 }
+.resume-biography .social-links svg,
 .resume-biography .flex.justify-center.gap-4 svg {
     width: 1.25rem !important;
     height: 1.25rem !important;

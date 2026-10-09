@@ -283,7 +283,7 @@
           {{ $links = slice $links_raw }}
         {{ end }}
         {{ if gt (len $links) 0 }}
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="social-links flex flex-wrap justify-center gap-4">
           {{ range $links }}
           {{ $linkUrl := "" }}
           {{ $iconName := "hero/link" }}
