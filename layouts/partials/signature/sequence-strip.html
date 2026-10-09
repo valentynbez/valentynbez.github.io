@@ -10,14 +10,14 @@
 {{ $stop_codon := strings.TrimSpace (default "" $sig.stop_codon) }}
 {{ $right_flank := strings.TrimSpace (default "" $sig.right_flank) }}
 
-{{/* Template assertion: coding length (start codon + ORF) must equal 3 * translation length */}}
-{{ $coding_len := add (len $start_codon) (len $orf) }}
+{{/* Template assertion: ORF length must equal 3 * translation length */}}
+{{ $orf_len := len $orf }}
 {{ $trans_len := len $translation }}
-{{ if ne $coding_len (mul 3 $trans_len) }}
-  {{ errorf "Signature error: coding length (start_codon + orf) [%d] != 3 * len(translation) [%d]" $coding_len (mul 3 $trans_len) }}
+{{ if ne $orf_len (mul 3 $trans_len) }}
+  {{ errorf "Signature error: len(orf) [%d] != 3 * len(translation) [%d]" $orf_len (mul 3 $trans_len) }}
 {{ end }}
 
-{{ $offset_ch := len $left_flank }}
+{{ $offset_ch := add (len $left_flank) (len $start_codon) }}
 
 <div class="sig-strip" tabindex="0" aria-hidden="true">
   <div class="sig-window">

@@ -15,7 +15,7 @@
   "btn_doi" "DOI"
   "btn_code" "Code"
   "btn_site" "Site"
-  "btn_source" "Link"
+  "btn_source" "Journal Page"
   "btn_cite" "Cite"
   "btn_slides" "Slides"
   "btn_video" "Video"
@@ -46,6 +46,11 @@
       {{ with .labelKey }}
         {{ if not $label }}
           {{ $label = (i18n .) | default (index $fallbackByKey .) | default "Link" }}
+        {{ end }}
+      {{ end }}
+      {{ if eq .type "source" }}
+        {{ if not .label }}
+          {{ $label = "Journal Page" }}
         {{ end }}
       {{ end }}
       {{ if not $label }}

@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <div class="max-w-6xl mx-auto px-4 md:px-8 py-12">
-  <article class="prose prose-slate lg:prose-xl dark:prose-invert max-w-none mb-8">
+  <article class="prose prose-slate lg:prose-xl dark:prose-invert max-w-[56rem] mx-auto px-4 mb-4">
     {{ .Content }}
   </article>
 
@@ -31,18 +31,18 @@
               {{ $item := . }}
               <div class="pub-list-item view-citation">
                 <div class="pub-title">
-                  <a href="{{ $item.RelPermalink }}" class="pub-title-hover text-lg font-bold text-slate-800 dark:text-slate-100 hover:text-indigo-500 transition-colors">
+                  <a href="{{ $item.RelPermalink }}" class="pub-title-hover text-lg font-bold text-slate-800 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                     {{ $item.Title }}
                   </a>
                 </div>
                 
-                <div class="text-sm mt-1 text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-x-3">
+                <div class="text-sm mt-1 text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-x-2.5">
                   {{ if $item.Params.event }}
-                    <span class="font-semibold text-indigo-500 dark:text-indigo-400">{{ $item.Params.event }}</span>
+                    <span class="font-semibold text-emerald-700 dark:text-emerald-400">{{ $item.Params.event }}</span>
                   {{ end }}
                   {{ if and $item.Params.event $item.Params.location }}<span class="text-slate-300 dark:text-slate-700">•</span>{{ end }}
                   {{ if $item.Params.location }}
-                    <span>📍 {{ $item.Params.location }}</span>
+                    <span class="text-slate-600 dark:text-slate-400">{{ $item.Params.location }}</span>
                   {{ end }}
                 </div>
 

@@ -1,0 +1,7 @@
+{{- $raw := .raw -}}
+{{- $slug := $raw | urlize -}}
+{{- $profile := partial "functions/get_author_profile" (dict "slug" $slug "title" $raw) -}}
+{{- $termPage := site.GetPage (printf "/authors/%s" $slug) -}}
+{{- $display := $profile.title | default $raw -}}
+{{- $is_me := or (eq $slug "me") (eq (lower $raw) "valentyn bezshapkin") (eq (lower $slug) "valentyn-bezshapkin") -}}
+<span {{ if $is_me }}class="font-bold"{{end}}>{{- if $termPage -}}<a href="{{ $termPage.RelPermalink }}">{{ $display }}</a>{{- else -}}{{ $display }}{{- end -}}</span>

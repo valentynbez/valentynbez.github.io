@@ -328,11 +328,14 @@ ul.network-icon { gap: 0.5rem !important; margin-top: 1rem !important; }
     content: '';
     position: absolute;
     left: -5px;
-    top: 5px;
+    top: 7px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #059669;
+}
+#talks-list .view-citation::before {
+    top: 10px;
 }
 .dark .view-citation::before {
     background-color: #34d399;
